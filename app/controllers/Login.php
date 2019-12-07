@@ -18,6 +18,11 @@ class Login extends Controller
         header('Location: ' . BASEURL . '/login');
         exit;
     }
+    public function keluar()
+    {
+        unset($_SESSION['user']);
+        header('Location: ' . BASEURL);
+    }
     public function daftar()
     {
         if ($this->model('User_model')->tambahDataUser($_POST) > 0) {

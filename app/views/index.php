@@ -118,12 +118,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tutorial</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/dashboard">Back to Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/login">Login/Daftar</a>
-                    </li>
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASEURL; ?>/dashboard">Back to Dashboard</a>
+                        </li>
+                    <?php } ?>
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASEURL; ?>/login">Login/Daftar</a>
+                        </li>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASEURL; ?>/login/keluar">Logout</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -138,7 +147,10 @@
                     <h3>Kepolisian Sektor Kedaton</h3>
                     <h4 class="description text-center">Jl. Soekarno Hatta No.14, Kp. Baru, Kec. Kedaton, Kota Bandar Lampung, Lampung 35245</h4>
                     <br />
-                    <a href=#" class="btn btn-round btn-neutral btn-fill" target="_blank">Buat SKTLK</a>
+                    <a <?php if (isset($_SESSION['user'])) {
+                            echo 'href="' . BASEURL . '/dashboard"';
+                        }
+                        echo 'href="' . BASEURL . '/login"'; ?> class="btn btn-round btn-neutral btn-fill" target="_blank">Buat SKTLK</a>
                 </div>
             </div>
         </div>

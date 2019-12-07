@@ -34,35 +34,43 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>">
+                        <a class="nav-link" href="<?= BASEURL; ?>/dashboard">
                             <i class="nc-icon nc-icon nc-bank"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="<?= BASEURL; ?>/admin">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Admin</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?= BASEURL; ?>/user">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>User</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class=" nav-link" href="<?= BASEURL; ?>/Pelapor">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Data Pelapor </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?= BASEURL; ?>/Laporan">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Laporan Kehilangan</p>
-                        </a>
-                    </li>
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                        <li>
+                            <a class="nav-link" href="<?= BASEURL; ?>/admin">
+                                <i class="nc-icon nc-circle-09"></i>
+                                <p>Admin</p>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                        <li>
+                            <a class="nav-link" href="<?= BASEURL; ?>/user">
+                                <i class="nc-icon nc-circle-09"></i>
+                                <p>User</p>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                        <li>
+                            <a class=" nav-link" href="<?= BASEURL; ?>/Pelapor">
+                                <i class="nc-icon nc-notes"></i>
+                                <p>Data Pelapor </p>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <li>
+                            <a class="nav-link" href="<?= BASEURL; ?>/Laporan">
+                                <i class="nc-icon nc-notes"></i>
+                                <p>Laporan Kehilangan</p>
+                            </a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -91,7 +99,7 @@
                                     </a>
                                 </li> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="<?= BASEURL; ?>/login/keluar">
                                     <span class="nc-icon nc-button-power"> Log out</span>
                                 </a>
                             </li>
