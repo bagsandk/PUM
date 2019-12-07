@@ -12,46 +12,33 @@
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
-                        <table class="table table-hover table-striped ">
+                        <table class="table table-hover table-striped">
                             <thead class="text-capitalize">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
-                                    <th>NIK</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Agama</th>
-                                    <th>Alamat</th>
-                                    <th>Status</th>
-                                    <th>Pekerjaan</th>
-                                    <th>KWN</th>
-                                    <th>Pernyataan</th>
-                                    <th>Tanggal Lapor</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>NO HP</th>
+                                    <th>Foto</th>
+                                    <th>Tgl Daftar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1;
-                                foreach ($data['pralapor'] as $row) :
+                                foreach ($data['user'] as $row) :
                                     ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= $row['nama']; ?></td>
-                                        <td><?= $row['nik']; ?></td>
-                                        <td><?= $row['tmp_lahir']; ?></td>
-                                        <td><?= $row['tgl_lahir']; ?></td>
-                                        <td><?= $row['jk']; ?></td>
-                                        <td><?= $row['agama']; ?></td>
-                                        <td><?= $row['alamat']; ?></td>
-                                        <td><?= $row['status']; ?></td>
-                                        <td><?= $row['pekerjaan']; ?></td>
-                                        <td><?= $row['kwn']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['tgl_data']; ?></td>
+                                        <td><?= $row['email']; ?></td>
+                                        <td><?= $row['password']; ?></td>
+
+                                        <td><?= $row['no_hp']; ?></td>
+                                        <td><img class="avatar border-gray" src="<?= BASEURL; ?>/img/user/<?= $row['foto']; ?>" alt=""></td>
+                                        <td><?= $row['tgl_daftar']; ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/pralapor/edit/<?= $row['id_ds']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/pralapor/hapus/<?= $row['id_ds']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/user/edit/<?= $row['id_user']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/user/hapus/<?= $row['id_user']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -68,18 +55,22 @@
                             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= BASEURL; ?>/Admin/tambah" method="post">
+                            <form action="<?= BASEURL; ?>/User/tambah" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="col-form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama">
-                                </div>
-                                <div class="form-group">
-                                    <label for="example-text-input" class="col-form-label">Username</label>
-                                    <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+                                    <label for="example-text-input" class="col-form-label">Email</label>
+                                    <input class="form-control" type="email" id="email" name="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">NO HP</label>
+                                    <input type="number" class="form-control" id="no_hp" name="no_hp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Foto</label>
+                                    <input type="file" class="form-control-file" name="foto" id="foto">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

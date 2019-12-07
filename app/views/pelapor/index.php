@@ -12,15 +12,21 @@
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
-                        <table class="table table-hover table-striped">
+                        <table class="table table-hover table-striped ">
                             <thead class="text-capitalize">
                                 <tr>
                                     <th>No</th>
-                                    <th>Email</th>
-                                    <th>Password</th>
-                                    <th>Foto</th>
+                                    <th>Nama</th>
+                                    <th>NIK</th>
+                                    <th>Tempat Lahir</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Agama</th>
+                                    <th>Alamat</th>
                                     <th>Status</th>
-                                    <th>Tgl Daftar</th>
+                                    <th>Pekerjaan</th>
+                                    <th>KWN</th>
+                                    <th>Tanggal Lapor</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -30,14 +36,20 @@
                                     ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= $row['email']; ?></td>
-                                        <td><?= $row['password']; ?></td>
-                                        <td><img class="avatar border-gray" src="<?= BASEURL; ?>/img/pelapor/<?= $row['foto']; ?>" alt=""></td>
+                                        <td><?= $row['nama']; ?></td>
+                                        <td><?= $row['nik']; ?></td>
+                                        <td><?= $row['tmp_lahir']; ?></td>
+                                        <td><?= $row['tgl_lahir']; ?></td>
+                                        <td><?= $row['jk']; ?></td>
+                                        <td><?= $row['agama']; ?></td>
+                                        <td><?= $row['alamat']; ?></td>
                                         <td><?= $row['status']; ?></td>
-                                        <td><?= $row['tgl_daftar']; ?></td>
+                                        <td><?= $row['pekerjaan']; ?></td>
+                                        <td><?= $row['kwn']; ?></td>
+                                        <td><?= $row['tgl_data']; ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/pelapor/edit/<?= $row['id_pelapor']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/pelapor/hapus/<?= $row['id_pelapor']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/pelapor/edit/<?= $row['id_ds']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/pelapor/hapus/<?= $row['id_ds']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -54,18 +66,18 @@
                             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= BASEURL; ?>/Pelapor/tambah" method="post" enctype="multipart/form-data">
+                            <form action="<?= BASEURL; ?>/Admin/tambah" method="post">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="col-form-label">Email</label>
-                                    <input class="form-control" type="email" id="email" name="email">
+                                    <label for="example-text-input" class="col-form-label">Nama</label>
+                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Username</label>
+                                    <input class="form-control" type="text" id="username" name="username" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Foto</label>
-                                    <input type="file" class="form-control-file" name="foto" id="foto">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

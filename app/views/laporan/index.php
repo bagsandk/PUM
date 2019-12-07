@@ -16,7 +16,7 @@
                             <thead class="text-capitalize">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Pelapor</th>
+                                    <th>ID kehilangan</th>
                                     <th>No Surat</th>
                                     <th>Bulan</th>
                                     <th>Tahun</th>
@@ -33,7 +33,7 @@
                                     ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= $row['id_ds']; ?></td>
+                                        <td><?= $row['id_kehilangan']; ?></td>
                                         <td><?= $row['no_surat']; ?></td>
                                         <td><?= $row['bulan']; ?></td>
                                         <td><?= $row['tahun']; ?></td>

@@ -1,7 +1,7 @@
 <?php
 class Pelapor_model
 {
-    private $table = 'pelapor';
+    private $table = 'Pelapor';
     private $db;
 
     public function __construct()
@@ -15,54 +15,48 @@ class Pelapor_model
     }
     public function getPelaporById($id)
     {
-        $this->db->query('select * from ' . $this->table . ' where id_pelapor = :id_pelapor');
-        $this->db->bind('id_pelapor', $id);
+        $this->db->query('select * from ' . $this->table . ' where id_ds = :id_ds');
+        $this->db->bind('id_admin', $id);
         return $this->db->single();
     }
-    public function tambahDataPelapor($data)
-    {
-        $foto = $_FILES['foto']['name'];
-        $tmp = $_FILES['foto']['tmp_name'];
-        $namafoto = date('dmYHis') . $foto;
-        $path = './img/pelapor/' . $namafoto;
+    //     public function tambahDataPelapor($data)
+    //     {
+    //         $query = "INSERT INTO " . $this->table . " VALUES ('',:nm_admin, :username, :password)";
+    //         $this->db->query($query);
+    //         $this->db->bind('nm_admin', $data['nama']);
+    //         $this->db->bind('username', $data['username']);
+    //         $this->db->bind('password', md5($data['password']));
 
-        if (move_uploaded_file($tmp, $path)) {
-            $query = "INSERT INTO " . $this->table . "(email, password, foto, status) VALUES (:email, :password, :foto,'1')";
-            $this->db->query($query);
-            $this->db->bind('email', $data['email']);
-            $this->db->bind('password', md5($data['password']));
-            $this->db->bind('foto', $namafoto);
+    //         $this->db->execute();
 
-            $this->db->execute();
-            return $this->db->rowCount();
-        }
-    }
-    public function editDataPelapor($data)
-    {
-        $query = "UPDATE " . $this->table . " SET 
-		email = :email,
-		password = :password,
-		foto = :foto
-		WHERE id_pelapor = :id_pelapor";
+    //         return $this->db->rowCount();
+    //     }
+    //     public function editDataPelapor($data)
+    //     {
+    //         $query = "UPDATE admin SET 
+    // 		nm_admin = :nm_admin,
+    // 		username = :username,
+    // 		password = :password 
+    // 		WHERE id_admin = :id_admin";
 
-        $this->db->query($query);
-        $this->db->bind('id_pelapor', $data['id_pelapor']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('password', md5($data['password']));
-        $this->db->bind('foto', $data['foto']);
+    //         $this->db->query($query);
+    //         $this->db->bind('id_admin', $data['id_admin']);
+    //         $this->db->bind('nm_admin', $data['nm_admin']);
+    //         $this->db->bind('username', $data['username']);
+    //         $this->db->bind('password', md5($data['password']));
 
-        $this->db->execute();
+    //         $this->db->execute();
 
-        return $this->db->rowCount();
-    }
-    public function hapusDataPelapor($id)
-    {
-        $query = "DELETE FROM " . $this->table . " WHERE id_pelapor = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+    //         return $this->db->rowCount();
+    //     }
+    //     public function hapusDataPelapor($id)
+    //     {
+    //         $query = "DELETE FROM " . $this->table . " WHERE ID_" . $this->table . " = :id";
+    //         $this->db->query($query);
+    //         $this->db->bind('id', $id);
 
-        $this->db->execute();
+    //         $this->db->execute();
 
-        return $this->db->rowCount();
-    }
+    //         return $this->db->rowCount();
+    //     }
 }

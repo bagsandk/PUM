@@ -46,15 +46,15 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?= BASEURL; ?>/pelapor">
+                        <a class="nav-link" href="<?= BASEURL; ?>/user">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Pelapor</p>
+                            <p>User</p>
                         </a>
                     </li>
                     <li>
-                        <a class=" nav-link" href="<?= BASEURL; ?>/pralapor">
+                        <a class=" nav-link" href="<?= BASEURL; ?>/Pelapor">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Laporan Sementara </p>
+                            <p>Data Pelapor </p>
                         </a>
                     </li>
                     <li>
