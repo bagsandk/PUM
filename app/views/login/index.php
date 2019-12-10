@@ -66,8 +66,8 @@
                     <div class="tabcontent" id="sign-in">
                         <div class="form-row">
                             <label class="form-row-inner">
-                                <input type="email" name="email" id="email" class="input-text" required>
-                                <span class="label">E-Mail</span>
+                                <input type="text" name="email" id="email" class="input-text" required>
+                                <span class="label">E-Mail / Username</span>
                                 <span class="border"></span>
                             </label>
                         </div>

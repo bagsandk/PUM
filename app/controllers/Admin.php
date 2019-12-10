@@ -2,14 +2,29 @@
 
 class Admin extends Controller
 {
+	public function __construct()
+	{
+		if (!isset($_SESSION['lvladmin']) == 11) {
+			header('Location: ' . BASEURL . '/dashboard');
+			exit;
+		}
+	}
 
 	public function index()
 	{
-		$data['admin'] = $this->model('Admin_model')->getALLAdmin();
-		$data['judul'] = 'Admin';
-		$this->view('templates/header', $data);
-		$this->view('admin/index', $data);
-		$this->view('templates/footer');
+		if ($_SESSION['lvladmin'] == 10) {
+			$data['admin'] = $this->model('Admin_model')->getAdminById($_SESSION['admin']);
+			$data['judul'] = 'Admin';
+			$this->view('templates/header', $data);
+			$this->view('admin/edit', $data);
+			$this->view('templates/footer');
+		} else {
+			$data['admin'] = $this->model('Admin_model')->getALLAdmin();
+			$data['judul'] = 'Admin';
+			$this->view('templates/header', $data);
+			$this->view('admin/index', $data);
+			$this->view('templates/footer');
+		}
 	}
 
 	public function tambah()

@@ -16,44 +16,30 @@
                             <thead class="text-capitalize">
                                 <tr>
                                     <th>No</th>
-                                    <th>ID kehilangan</th>
-                                    <th>No Surat</th>
-                                    <th>Bulan</th>
-                                    <th>Tahun</th>
-                                    <th>Tanggal</th>
+                                    <th>Nama Pelapor</th>
+                                    <th>Nama Barang / Dokumen</th>
+                                    <th>Keterangan</th>
+                                    <th>Tanggal Hilang</th>
                                     <th>Hari</th>
-                                    <th>Waktu</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
+                                    <th>Tempat</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1;
-                                foreach ($data['laporan'] as $row) :
+                                foreach ($data['kehilangan'] as $row) :
                                     ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= $row['id_kehilangan']; ?></td>
-                                        <td><?= $row['no_surat']; ?></td>
-                                        <td><?= $row['bulan']; ?></td>
-                                        <td><?= $row['tahun']; ?></td>
-                                        <td><?= $row['tgl_surat']; ?></td>
+                                        <td><?= $row['nama']; ?></td>
+                                        <td><?= $row['nm_brg/doc']; ?></td>
+                                        <td><?= $row['ket']; ?></td>
+                                        <td><?= $row['tgl_hilang']; ?></td>
                                         <td><?= $row['hari']; ?></td>
-                                        <td><?= $row['waktu']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
+                                        <td><?= $row['tempat']; ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/kehilangan/edit/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/kehilangan/hapus/<?= $row['id_kehilangan']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

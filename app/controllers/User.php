@@ -5,12 +5,20 @@ class User extends Controller
 
     public function index()
     {
-        $data['user'] = $this->model('User_model')->getALLUser();
+        if (!isset($_SESSION['user'])) {
+            $data['user'] = $this->model('User_model')->getALLUser();
+            $data['judul'] = 'User';
+            $this->view('templates/header', $data);
+            $this->view('user/index', $data);
+            $this->view('templates/footer');
+        }
+        $data['user'] = $this->model('User_model')->getUserById($_SESSION['user']);
         $data['judul'] = 'User';
         $this->view('templates/header', $data);
-        $this->view('user/index', $data);
+        $this->view('user/edit', $data);
         $this->view('templates/footer');
     }
+
 
     public function tambah()
     {

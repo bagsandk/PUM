@@ -4,10 +4,10 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Edit Profile</h4>
+                        <h4 class="card-title">Data User</h4>
                     </div>
                     <div class="card-body">
-                        <form action="<?= BASEURL; ?>/user/getedit" method="post">
+                        <form action="<?= BASEURL; ?>/user/getedit" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $data['user']['id_user']; ?>">
                             </div>
@@ -39,7 +39,7 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>Foto</label>
-                                        <input type="text" class="form-control" id="foto" name="foto" value="<?= $data['user']['foto']; ?>">
+                                        <input type="file" class="form-control-file" id="foto" name="foto" value="<?= $data['user']['foto']; ?>">
                                     </div>
                                 </div>
                             </div>

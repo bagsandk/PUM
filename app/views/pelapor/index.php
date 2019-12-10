@@ -40,7 +40,11 @@
                                         <td><?= $row['nik']; ?></td>
                                         <td><?= $row['tmp_lahir']; ?></td>
                                         <td><?= $row['tgl_lahir']; ?></td>
-                                        <td><?= $row['jk']; ?></td>
+                                        <td><?php if ($row['jk'] == 'L') {
+                                                    echo 'Laki-laki';
+                                                } else {
+                                                    echo 'Perempuan';
+                                                } ?></td>
                                         <td><?= $row['agama']; ?></td>
                                         <td><?= $row['alamat']; ?></td>
                                         <td><?= $row['status']; ?></td>
@@ -48,8 +52,8 @@
                                         <td><?= $row['kwn']; ?></td>
                                         <td><?= $row['tgl_data']; ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/pelapor/edit/<?= $row['id_ds']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/pelapor/hapus/<?= $row['id_ds']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/pelapor/edit/<?= $row['id_pelapor']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/pelapor/hapus/<?= $row['id_pelapor']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

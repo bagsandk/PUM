@@ -15,48 +15,77 @@ class Pelapor_model
     }
     public function getPelaporById($id)
     {
-        $this->db->query('select * from ' . $this->table . ' where id_ds = :id_ds');
-        $this->db->bind('id_admin', $id);
+        $this->db->query('select * from ' . $this->table . ' where id_pelapor = :id_pelapor');
+        $this->db->bind('id_pelapor', $id);
         return $this->db->single();
     }
-    //     public function tambahDataPelapor($data)
-    //     {
-    //         $query = "INSERT INTO " . $this->table . " VALUES ('',:nm_admin, :username, :password)";
-    //         $this->db->query($query);
-    //         $this->db->bind('nm_admin', $data['nama']);
-    //         $this->db->bind('username', $data['username']);
-    //         $this->db->bind('password', md5($data['password']));
+    public function getPelaporByUser($id)
+    {
+        $this->db->query('select * from ' . $this->table . ' where id_user = :id_user');
+        $this->db->bind('id_user', $id);
+        return $this->db->single();
+    }
+    public function tambahDataPelapor($data)
+    {
+        $query = "INSERT INTO " . $this->table . "(id_user,nik,nama,tmp_lahir,tgl_lahir,jk,alamat,agama,status,pekerjaan,kwn) VALUES (:id_user, :nik, :nama, :tmp_lahir, :tgl_lahir, :jk, :alamat, :agama, :status, :pekerjaan, :kwn )";
+        $this->db->query($query);
+        $this->db->bind('id_user', $_SESSION['user']);
+        $this->db->bind('nik', $data['nik']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('tmp_lahir', $data['tmp_lahir']);
+        $this->db->bind('tgl_lahir', $data['tgl_lahir']);
+        $this->db->bind('jk', $data['jk']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('agama', $data['agama']);
+        $this->db->bind('status', $data['status']);
+        $this->db->bind('pekerjaan', $data['pekerjaan']);
+        $this->db->bind('kwn', $data['kwn']);
 
-    //         $this->db->execute();
+        $this->db->execute();
 
-    //         return $this->db->rowCount();
-    //     }
-    //     public function editDataPelapor($data)
-    //     {
-    //         $query = "UPDATE admin SET 
-    // 		nm_admin = :nm_admin,
-    // 		username = :username,
-    // 		password = :password 
-    // 		WHERE id_admin = :id_admin";
+        return $this->db->rowCount();
+    }
+    public function editDataPelapor($data)
+    {
+        $query = "UPDATE pelapor SET 
+    		nik = :nik,
+    		nama = :nama,
+    		tmp_lahir = :tmp_lahir,
+    		tgl_lahir = :tgl_lahir,
+    		jk = :jk,
+    		alamat = :alamat,
+    		agama = :agama,
+    		status = :status,
+    		pekerjaan = :pekerjaan,
+    		kwn = :kwn 
+    		WHERE id_pelapor = :id_pelapor";
 
-    //         $this->db->query($query);
-    //         $this->db->bind('id_admin', $data['id_admin']);
-    //         $this->db->bind('nm_admin', $data['nm_admin']);
-    //         $this->db->bind('username', $data['username']);
-    //         $this->db->bind('password', md5($data['password']));
+        $this->db->query($query);
+        $this->db->query($query);
+        $this->db->bind('id_pelapor', $data['id_pelapor']);
+        $this->db->bind('nik', $data['nik']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('tmp_lahir', $data['tmp_lahir']);
+        $this->db->bind('tgl_lahir', $data['tgl_lahir']);
+        $this->db->bind('jk', $data['jk']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('agama', $data['agama']);
+        $this->db->bind('status', $data['status']);
+        $this->db->bind('pekerjaan', $data['pekerjaan']);
+        $this->db->bind('kwn', $data['kwn']);
 
-    //         $this->db->execute();
+        $this->db->execute();
 
-    //         return $this->db->rowCount();
-    //     }
-    //     public function hapusDataPelapor($id)
-    //     {
-    //         $query = "DELETE FROM " . $this->table . " WHERE ID_" . $this->table . " = :id";
-    //         $this->db->query($query);
-    //         $this->db->bind('id', $id);
+        return $this->db->rowCount();
+    }
+    public function hapusDataPelapor($id)
+    {
+        $query = "DELETE FROM " . $this->table . " WHERE ID_" . $this->table . " = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
 
-    //         $this->db->execute();
+        $this->db->execute();
 
-    //         return $this->db->rowCount();
-    //     }
+        return $this->db->rowCount();
+    }
 }

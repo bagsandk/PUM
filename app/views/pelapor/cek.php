@@ -20,7 +20,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="black">
+        <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['user']) || $_SESSION['lvladmin'] == 11) { ?>
+                    <?php if (!isset($_SESSION['lvladmin']) == 10) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/user">
                                 <i class="nc-icon nc-circle-09"></i>
@@ -60,14 +60,6 @@
                             <a class=" nav-link" href="<?= BASEURL; ?>/Pelapor">
                                 <i class="nc-icon nc-notes"></i>
                                 <p>Data Pelapor </p>
-                            </a>
-                        </li>
-                    <?php } ?>
-                    <?php if (isset($_SESSION['admin'])) { ?>
-                        <li>
-                            <a class="nav-link" href="<?= BASEURL; ?>/Kehilangan">
-                                <i class="nc-icon nc-notes"></i>
-                                <p>Kehilangan</p>
                             </a>
                         </li>
                     <?php } ?>

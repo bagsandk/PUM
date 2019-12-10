@@ -9,8 +9,15 @@ class Login extends Controller
     public function masuk()
     {
         $data['user'] = $this->model('Login_model')->auth_user($_POST);
-        if ($data > 0) {
+        $data['admin'] = $this->model('Login_model')->auth_admin($_POST);
+        if ($data['user'] > 0) {
             $_SESSION['user'] = $data['user']['id_user'];
+            header('Location: ' . BASEURL . '/dashboard');
+            exit;
+        } elseif ($data['admin'] > 0) {
+            $_SESSION['admin'] = $data['admin']['id_admin'];
+            $_SESSION['lvladmin'] = $data['admin']['lvl'];
+            $_SESSION['unadmin'] = $data['admin']['username'];
             header('Location: ' . BASEURL . '/dashboard');
             exit;
         }
@@ -21,11 +28,16 @@ class Login extends Controller
     public function keluar()
     {
         unset($_SESSION['user']);
+        unset($_SESSION['admin']);
+        unset($_SESSION['lvladmin']);
+        unset($_SESSION['unadmin']);
         header('Location: ' . BASEURL);
     }
     public function daftar()
     {
         if ($this->model('User_model')->tambahDataUser($_POST) > 0) {
+            $data['user'] = $this->model('Login_model')->auth_user($_POST);
+            $_SESSION['user'] = $data['user']['id_user'];
             flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             header('Location: ' . BASEURL . '/User');
             exit;

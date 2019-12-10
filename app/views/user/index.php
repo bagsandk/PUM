@@ -66,9 +66,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">NO HP</label>
-                                    <input type="number" class="form-control" id="no_hp" name="no_hp">
+                                    <input type="number" class="form-control" id="no_hp" name="no_hp" maxlength="13" size="20>
                                 </div>
-                                <div class="form-group">
+                                <div class=" form-group">
                                     <label for="exampleFormControlFile1">Foto</label>
                                     <input type="file" class="form-control-file" name="foto" id="foto">
                                 </div>

@@ -33,8 +33,6 @@ class App
 		}
 		//menjalankan controller,method,paramaters jika ada
 		call_user_func_array([$this->controller, $this->method], $this->params);
-
-		var_dump($url);
 	}
 	//memparse url menjadi array kemudian pemisah / dibuang untuk mengambil stringnya saja kemudian di filter aagar terhindar dari url ngacok
 	public function parseURL()
