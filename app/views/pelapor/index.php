@@ -7,8 +7,8 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Tabel Admin</h4>
-                        <button type="button" class="btn btn-primary nc-icon nc-simple-add pull-right" data-toggle="modal" data-target="#exampleModalLong"></button>
+                        <h4 class="card-title">Tabel Pelapor</h4>
+                        <a href="<?= BASEURL; ?>/pelapor/tambah"><button type="button" class="btn btn-primary nc-icon nc-simple-add pull-right"></button></a>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade modal-primary" id="exampleModalLong">
+            <!-- <div class="modal fade modal-primary" id="exampleModalLong">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -92,7 +92,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

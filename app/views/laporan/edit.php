@@ -4,39 +4,47 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Edit Profile</h4>
+                        <h4 class="card-title">Edit Laporan</h4>
                     </div>
                     <div class="card-body">
-                        <form action="<?= BASEURL; ?>/Admin/getedit" method="post">
+                        <form action="<?= BASEURL; ?>/laporan/getedit" method="post">
                             <div class="form-group">
-                                <input type="hidden" class="form-control" id="id_admin" name="id_admin" value="<?= $data['admin']['id_admin']; ?>">
+                                <input type="hidden" class="form-control" id="id_lap" name="id_lap" value="<?= $data['laporan']['id_lap']; ?>">
                             </div>
                             <div class="row">
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
-                                        <label>Nama</label>
-                                        <input type="text" class="form-control" id="nm_admin" name="nm_admin" value="<?= $data['admin']['nm_admin']; ?>">
+                                        <label>Id Kehilangan</label>
+                                        <input type="text" class="form-control" id="id_kehilangan" name="id_kehilangan" value="<?= $data['laporan']['id_kehilangan']; ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" id="username" name="username" value="<?= $data['admin']['username']; ?>">
+                                        <label>No Surat</label>
+                                        <input type="text" class="form-control" id="no_surat" name="no_surat" value="<?= $data['laporan']['no_surat']; ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" value="<?= $data['admin']['password']; ?>">
+                                        <label>Tanggal Pembuatan</label>
+                                        <input type="date" class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $data['laporan']['tgl_surat']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 pr-1">
+                                    <div class="form-group">
+                                        <label>Pukul</label>
+                                        <input type="time" class="form-control" id="waktu" name="waktu" value="<?= $data['laporan']['waktu']; ?>">
                                     </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
-                            <a href="<?= BASEURL; ?>/admin" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
+                            <a href="<?= BASEURL; ?>/laporan" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
                             <div class="clearfix"></div>
                         </form>
                     </div>

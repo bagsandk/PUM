@@ -19,6 +19,7 @@
                                     <th>Nama</th>
                                     <th>Username</th>
                                     <th>Password</th>
+                                    <th>Level</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -31,6 +32,11 @@
                                         <td><?= $row['nm_admin']; ?></td>
                                         <td><?= $row['username']; ?></td>
                                         <td><?= $row['password']; ?></td>
+                                        <td><?php if ($row['lvl'] == 10) {
+                                                    echo 'Admin';
+                                                } else {
+                                                    echo 'Super Admin';
+                                                } ?></td>
                                         <td class="td-actions text-right">
                                             <a href="<?= BASEURL; ?>/admin/edit/<?= $row['id_admin']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
                                             <a href="<?= BASEURL; ?>/admin/hapus/<?= $row['id_admin']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
@@ -62,6 +68,13 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Level</label>
+                                    <select class="form-control" id="lvl" name="lvl">
+                                        <option value="10">Admin</option>
+                                        <option value="11">Super Admin</option>
+                                    </select>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

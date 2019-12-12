@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Tabel Admin</h4>
+                        <h4 class="card-title">Tabel Laporan Kehilangan</h4>
                         <button type="button" class="btn btn-primary nc-icon nc-simple-add pull-right" data-toggle="modal" data-target="#exampleModalLong"></button>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
@@ -18,17 +18,8 @@
                                     <th>No</th>
                                     <th>ID kehilangan</th>
                                     <th>No Surat</th>
-                                    <th>Bulan</th>
-                                    <th>Tahun</th>
                                     <th>Tanggal</th>
-                                    <th>Hari</th>
                                     <th>Waktu</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
-                                    <th>Pernyataan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -40,17 +31,8 @@
                                         <td><?= $no++; ?></td>
                                         <td><?= $row['id_kehilangan']; ?></td>
                                         <td><?= $row['no_surat']; ?></td>
-                                        <td><?= $row['bulan']; ?></td>
-                                        <td><?= $row['tahun']; ?></td>
                                         <td><?= $row['tgl_surat']; ?></td>
-                                        <td><?= $row['hari']; ?></td>
                                         <td><?= $row['waktu']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
-                                        <td><?= $row['pernyataan']; ?></td>
                                         <td class="td-actions text-right">
                                             <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
                                             <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
@@ -66,22 +48,31 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Tambah Admin</h5>
+                            <h5 class="modal-title">Tambah Laporan Kehilangan</h5>
                             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= BASEURL; ?>/Admin/tambah" method="post">
+                            <form action="<?= BASEURL; ?>/Laporan/tambah" method="post">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="col-form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama">
+                                    <label for="exampleFormControlSelect1">Data Kehilangan</label>
+                                    <select class="form-control" id="id_kehilangan" name="id_kehilangan">
+                                        <option value="">Data Kehilangan</option>
+                                        <?php foreach ($data['kel'] as $row) {
+                                            echo '<option value="' . $row['id_kehilangan'] . '"> ID : ' . $row['id_kehilangan'] . ' => Nama Pelapor : ' . $row['nama'] . '</option>';
+                                        } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input" class="col-form-label">Username</label>
-                                    <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+                                    <label for="example-text-input" class="col-form-label">No Surat</label>
+                                    <input class="form-control" type="text" id="no_surat" name="no_surat" placeholder="No Surat">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                    <label for="example-text-input" class="col-form-label">Tanggal Pembuatan</label>
+                                    <input class="form-control" type="date" id="tgl_surat" name="tgl_surat" placeholder="Tanggal Pembuatan">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Pukul</label>
+                                    <input class="form-control" type="time" id="waktu" name="waktu" placeholder="Pukul">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -11,17 +11,27 @@ class Pelapor extends Controller
             $this->view('templates/header', $data);
             $this->view('pelapor/index', $data);
             $this->view('templates/footer');
+        } else {
+
+            $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
+            $data['judul'] = 'Pelapor';
+            $this->view('templates/header', $data);
+            $this->view('pelapor/edit', $data);
+            $this->view('templates/footer');
         }
-        $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
-        $data['judul'] = 'Pelapor';
-        $this->view('templates/header', $data);
-        $this->view('pelapor/edit', $data);
-        $this->view('templates/footer');
     }
 
     public function tambah()
     {
-        if ($this->model('Pelapor_model')->tambahDataPelapor($_POST) > 0) {
+        $data['user'] = $this->model('User_model')->getUserNotIn();
+        $data['judul'] = 'Tambah Pelapor';
+        $this->view('templates/header', $data);
+        $this->view('pelapor/tambah', $data);
+        $this->view('templates/footer');
+    }
+    public function tambahdata()
+    {
+        if ($this->model('Pelapor_model')->tambahDataPelaporByAdmin($_POST) > 0) {
             flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             header('Location: ' . BASEURL . '/Pelapor');
             exit;
@@ -40,7 +50,7 @@ class Pelapor extends Controller
         $this->view('pelapor/edit', $data);
         $this->view('templates/footer');
     }
-
+    //SELECT * FROM `user` as x INNER JOIN pelapor as z ON x.id_user = z.id_user WHERE z.id_user = 22
     public function getedit()
     {
         if ($_POST['id_user'] > 0) {

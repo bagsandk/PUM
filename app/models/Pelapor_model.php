@@ -45,6 +45,26 @@ class Pelapor_model
 
         return $this->db->rowCount();
     }
+    public function tambahDataPelaporByAdmin($data)
+    {
+        $query = "INSERT INTO " . $this->table . "(id_user,nik,nama,tmp_lahir,tgl_lahir,jk,alamat,agama,status,pekerjaan,kwn) VALUES (:id_user, :nik, :nama, :tmp_lahir, :tgl_lahir, :jk, :alamat, :agama, :status, :pekerjaan, :kwn )";
+        $this->db->query($query);
+        $this->db->bind('id_user', $data['id_user']);
+        $this->db->bind('nik', $data['nik']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('tmp_lahir', $data['tmp_lahir']);
+        $this->db->bind('tgl_lahir', $data['tgl_lahir']);
+        $this->db->bind('jk', $data['jk']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('agama', $data['agama']);
+        $this->db->bind('status', $data['status']);
+        $this->db->bind('pekerjaan', $data['pekerjaan']);
+        $this->db->bind('kwn', $data['kwn']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
     public function editDataPelapor($data)
     {
         $query = "UPDATE pelapor SET 

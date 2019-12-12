@@ -58,16 +58,16 @@
                     <?php if (isset($_SESSION['user']) || $_SESSION['lvladmin'] == 11) { ?>
                         <li>
                             <a class=" nav-link" href="<?= BASEURL; ?>/Pelapor">
-                                <i class="nc-icon nc-notes"></i>
+                                <i class="nc-icon nc-circle-09"></i>
                                 <p>Data Pelapor </p>
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['admin'])) { ?>
+                    <?php if (isset($_SESSION['admin']) || isset($_SESSION['user'])) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/Kehilangan">
                                 <i class="nc-icon nc-notes"></i>
-                                <p>Kehilangan</p>
+                                <p>Lapor Kehilangan</p>
                             </a>
                         </li>
                     <?php } ?>

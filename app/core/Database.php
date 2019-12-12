@@ -20,7 +20,7 @@ class Database
 		];
 		try {
 			$this->dbh = new PDO($dsn, $this->user, $this->pass, $option); //konek ke database
-		} catch (PDOexeption $e) //pesan error
+		} catch (PDOException $e) //pesan error
 		{
 			die($e->getMessage);
 		}
@@ -30,9 +30,10 @@ class Database
 	{
 		$this->stmt = $this->dbh->prepare($query);
 	}
-	public function bind($param, $value, $type = null)
+	public function bind($param, $val, $type = null)
 	{
 		//mengecek type dari sebuah nila /$value agar terhindar dari sql injection
+		$value = ucwords($val);
 		if (is_null($type)) {
 			switch (true) {
 				case is_int($value):

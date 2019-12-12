@@ -13,6 +13,11 @@ class User_model
         $this->db->query('select * from ' . $this->table);
         return $this->db->resultSet();
     }
+    public function getUserNotIN()
+    {
+        $this->db->query('SELECT * FROM user WHERE NOT EXISTS (SELECT * FROM pelapor WHERE user.id_user = pelapor.id_user)');
+        return $this->db->resultSet();
+    }
     public function getUserById($id)
     {
         $this->db->query('select * from ' . $this->table . ' where id_user = :id_user');
@@ -32,7 +37,7 @@ class User_model
                 $this->db->bind('email', $data['email']);
                 $this->db->bind('password', md5($data['password']));
                 $this->db->bind('foto', $namafoto);
-                $this->db->bind('no_hp', $data['no_hp']);
+                $this->db->bind('no_hp',  $data['no_hp']);
 
                 $this->db->execute();
                 return $this->db->rowCount();
@@ -43,7 +48,7 @@ class User_model
             $this->db->bind('email', $data['email']);
             $this->db->bind('password', md5($data['password']));
             $this->db->bind('foto', 'default.png');
-            $this->db->bind('no_hp', $data['no_hp']);
+            $this->db->bind('no_hp',  $data['no_hp']);
 
             $this->db->execute();
             return $this->db->rowCount();
@@ -66,9 +71,25 @@ class User_model
             $this->db->query($query);
             $this->db->bind('id_user', $data['id_user']);
             $this->db->bind('email', $data['email']);
-            $this->db->bind('no_hp', $data['no_hp']);
+            $this->db->bind('no_hp',  $data['no_hp']);
             $this->db->bind('password', md5($data['password']));
             $this->db->bind('foto', $namafoto);
+
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } else {
+            $query = "UPDATE " . $this->table . " SET 
+		email = :email,
+		password = :password,
+        no_hp = :no_hp
+		WHERE id_user = :id_user";
+
+            $this->db->query($query);
+            $this->db->bind('id_user', $data['id_user']);
+            $this->db->bind('email', $data['email']);
+            $this->db->bind('no_hp',  $data['no_hp']);
+            $this->db->bind('password', md5($data['password']));
 
             $this->db->execute();
 

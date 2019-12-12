@@ -35,6 +35,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-4 pr-1">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Level</label>
+                                        <select class="form-control" id="lvl" name="lvl">
+                                            <option value="10" <?php if ($data['admin']['lvl'] == '10') echo 'selected="selected"'; ?>>Admin</option>
+                                            <option value="11" <?php if ($data['admin']['lvl'] == '11') echo 'selected="selected"'; ?>>Super Admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
                             <a href="<?= BASEURL; ?>/admin" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
                             <div class="clearfix"></div>

@@ -12,6 +12,8 @@ class Login extends Controller
         $data['admin'] = $this->model('Login_model')->auth_admin($_POST);
         if ($data['user'] > 0) {
             $_SESSION['user'] = $data['user']['id_user'];
+            $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
+            $_SESSION['pelapor'] = $data['pelapor']['id_pelapor'];
             header('Location: ' . BASEURL . '/dashboard');
             exit;
         } elseif ($data['admin'] > 0) {

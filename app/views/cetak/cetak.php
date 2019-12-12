@@ -40,14 +40,14 @@
                     <div class="t m0 x5 h4 y12 ff3 fs0 fc0 sc0 ls0 ws0">Kewarganegaraan <span class="_ _8"> </span>: <?= $data['kel']['kwn'] ?> </div>
                     <div class="t m0 x5 h4 y13 ff3 fs0 fc0 sc0 ls0 ws0">Alamat <span class="_ _9"></span> <span class="_ _4"> </span> <span class="_ _4"> </span>: <?= $data['kel']['alamat'] ?> </div>
                     <div class="t m0 x5 h4 y14 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
-                    <div class="t m0 x5 h4 y15 ff3 fs0 fc0 sc0 ls0 ws0">No .Telp/HP <span class="_ _a"> </span> <span class="_ _4"> </span>: no </div>
+                    <div class="t m0 x5 h4 y15 ff3 fs0 fc0 sc0 ls0 ws0">No .Telp/HP <span class="_ _a"> </span> <span class="_ _4"> </span>: 0<?= $data['kel']['no_hp'] ?> </div>
                     <div class="t m0 x5 h4 y16 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h3 y17 ff2 fs0 fc0 sc0 ls0 ws0">Melaporkan mengaku kehilangan barang ber<span class="_ _b"></span>harga /surat berupa : </div>
-                    <div class="t m0 x6 h5 y19 ff3 fs0 fc0 sc0 ls0 ws0">-<span class="ff4"> <span class="_ _c"> </span></span><?= $data['kel']['nm_brg/doc'] ?> <?= $data['kel']['ket'] ?> </div>
+                    <div class="t m0 x6 h5 y19 ff3 fs0 fc0 sc0 ls0 ws0">-<span class="ff4"> <span class="_ _c"> </span></span><?= $data['kel']['nm_brg_doc'] ?> <?= $data['kel']['ket'] ?> </div>
                     <div class="t m0 x5 h4 y19 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x6 h5 y1a ff3 fs0 fc0 sc0 ls0 ws0"><span class="ff4"> <span class="_ _c"> </span></span> </div>
                     <div class="t m0 x5 h4 y1b ff3 fs0 fc0 sc0 ls0 ws0"> </div>
-                    <div class="t m0 x5 h4 y1c ff3 fs0 fc0 sc0 ls0 ws0">Terjadi pada hari <span class="_ _d"> </span> <span> :</span> <?= $data['kel']['hari'] ?> <?= $data['kel']['tgl_hilang'] ?> </div>
+                    <div class="t m0 x5 h4 y1c ff3 fs0 fc0 sc0 ls0 ws0">Terjadi pada hari <span class="_ _d"> </span> <span> :</span> <?= $data['hari'] ?>, <?= $data['tgl'] ?> Sekitar pukul <?= $data['kel']['pukul'] ?> WIB </div>
                     <div class="t m0 x5 h4 y1d ff3 fs0 fc0 sc0 ls0 ws0">Diperkirakan di <span class="_ _e"> </span>:<span> <?= $data['kel']['tempat'] ?> </div>
                     <div class="t m0 x5 h4 y1e ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 y1f ff3 fs0 fc0 sc0 ls0 ws0"> </div>

@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Tabel Admin</h4>
+                        <h4 class="card-title">Tabel User</h4>
                         <button type="button" class="btn btn-primary nc-icon nc-simple-add pull-right" data-toggle="modal" data-target="#exampleModalLong"></button>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>

@@ -144,8 +144,6 @@
                 <div class="filter"></div>
                 <div class="title-container text-center">
                     <h1>Aplikasi SKTLK</h1>
-                    <?php var_dump($_SESSION['user']); ?>
-                    <?php var_dump($_SESSION['admin']); ?>
                     <h3>Kepolisian Sektor Kedaton</h3>
                     <h4 class="description text-center">Jl. Soekarno Hatta No.14, Kp. Baru, Kec. Kedaton, Kota Bandar Lampung, Lampung 35245</h4>
                     <br />
