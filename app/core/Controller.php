@@ -2,6 +2,15 @@
 class Controller
 {
 
+	public function view($view, $data = [])
+	{
+		require_once '../app/views/' . $view . '.php';
+	}
+	public function model($model)
+	{
+		require_once '../app/models/' . $model . '.php';
+		return new $model;
+	}
 	public function tgl_indo($tgl)
 	{
 		$bulan = array(
@@ -34,14 +43,5 @@ class Controller
 		);
 		$day = date('D', strtotime($hari));
 		return $konv[$day];
-	}
-	public function view($view, $data = [])
-	{
-		require_once '../app/views/' . $view . '.php';
-	}
-	public function model($model)
-	{
-		require_once '../app/models/' . $model . '.php';
-		return new $model;
 	}
 }

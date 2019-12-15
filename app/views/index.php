@@ -1,200 +1,214 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="<?= BASEURL; ?>/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="<?= BASEURL; ?>/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Aplikasi SKTLK Polsek Kedaton</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <!-- CSS Files -->
-    <link href="<?= BASEURL; ?>/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?= BASEURL; ?>/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="<?= BASEURL; ?>/css/demo.css" rel="stylesheet" />
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <style>
-        pre.prettyprint {
-            background-color: #eee;
-            border: 0px;
-            margin-bottom: 60px;
-            margin-top: 30px;
-            padding: 20px;
-            text-align: left;
-        }
 
-        .atv,
-        .str {
-            color: #05AE0E;
-        }
+    <!-- Font Awesome Icons -->
+    <link href="<?= BASEURL; ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-        .tag,
-        .pln,
-        .kwd {
-            color: #3472F7;
-        }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
-        .atn {
-            color: #2C93FF;
-        }
+    <!-- Plugin CSS -->
+    <link href="<?= BASEURL; ?>/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-        .pln {
-            color: #333;
-        }
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="<?= BASEURL; ?>/css/creative.css" rel="stylesheet">
+    <link href="<?= BASEURL; ?>/css/creative.min.css" rel="stylesheet">
+    <!-- <link href="<?= BASEURL; ?>/css/light-bootstrap-dashboard.css" rel="stylesheet"> -->
 
-        .com {
-            color: #999;
-        }
-
-        .space-top {
-            margin-top: 50px;
-        }
-
-        .btn-primary .caret {
-            border-top-color: #3472F7;
-            color: #3472F7;
-        }
-
-        .area-line {
-            border: 1px solid #999;
-            border-left: 0;
-            border-right: 0;
-            color: #666;
-            display: block;
-            margin-top: 20px;
-            padding: 8px 0;
-            text-align: center;
-        }
-
-        .area-line a {
-            color: #666;
-        }
-
-        .container-fluid {
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-
-        .table-shopping .td-name {
-            min-width: 130px;
-        }
-
-        .pick-class-label {
-            border-radius: 8px;
-            border: 1px solid #E3E3E3;
-            color: #ffffff;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 75%;
-            font-weight: bold;
-            line-height: 1;
-            margin-right: 10px;
-            padding: 23px;
-            text-align: center;
-            vertical-align: baseline;
-            white-space: nowrap;
-        }
-    </style>
+    <link href="<?= BASEURL; ?>/css/icon.css" rel="stylesheet">
 </head>
 
-<body class="documentation">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg  navbar-transparent " color-on-scroll="500">
-        <div class="  container-fluid ">
-            <a class="navbar-brand" href="#" target="_blank">
-                Aplikasi SKTLK
-            </a>
-            <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-bar burger-lines"></span>
-                <span class="navbar-toggler-bar burger-lines"></span>
-                <span class="navbar-toggler-bar burger-lines"></span>
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Aplikasi SKTLK</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                <ul class="navbar-nav">
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tutorial</a>
+                        <button type="button" class="btn btn-default nav-link" data-toggle="modal" data-target="#exampleModalScrollable">
+                            Tutorial
+                        </button>
                     </li>
-                    <?php if (isset($_SESSION['user'])) { ?>
+                    <?php if (isset($_SESSION['id'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= BASEURL; ?>/dashboard">Back to Dashboard</a>
                         </li>
                     <?php } ?>
-                    <?php if (!isset($_SESSION['user'])) { ?>
+                    <?php if (!isset($_SESSION['id'])) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BASEURL; ?>/login">Login/Daftar</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-default nav-link" data-toggle="modal" data-target="#exampleModal">
+                                Login / Regist
+                            </button>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['user'])) { ?>
+                    <?php if (isset($_SESSION['id'])) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BASEURL; ?>/login/keluar">Logout</a>
+                            <a class="nav-link " href="<?= BASEURL; ?>/login/keluar">Logout</a>
                         </li>
                     <?php } ?>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- End Navbar -->
-    <div class="wrapper">
-        <div class="page-header clear-filter" filter-color="purple">
-            <div class="page-header-image" data-parallax="true" style="background-image: url('<?= BASEURL; ?>/img/polsek.jpg')">
-                <div class="filter"></div>
-                <div class="title-container text-center">
-                    <h1>Aplikasi SKTLK</h1>
-                    <h3>Kepolisian Sektor Kedaton</h3>
-                    <h4 class="description text-center">Jl. Soekarno Hatta No.14, Kp. Baru, Kec. Kedaton, Kota Bandar Lampung, Lampung 35245</h4>
-                    <br />
-                    <a <?php if (isset($_SESSION['user'])) {
-                            echo 'href="' . BASEURL . '/dashboard"';
-                        }
-                        echo 'href="' . BASEURL . '/login"'; ?> class="btn btn-round btn-neutral btn-fill" target="_blank">Buat SKTLK</a>
+    <!-- Masthead -->
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-uppercase text-white font-weight-bold">Aplikasi SKTLK</h1>
+                    <h3 class="text-white">Kepolisian Sektor Kedaton</h3>
+                    <h4 class="description text-white text-center">Jl. Soekarno Hatta No.14, Kp. Baru, Kec. Kedaton, Kota Bandar Lampung, Lampung 35245</h4>
+                    <hr class="divider my-4">
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 font-weight-light mb-5">Selalu melayani setulus hati</p>
+                    <?php if (isset($_SESSION['id'])) {
+                        echo '<a class="btn btn-primary btn-xl js-scroll-trigger" href="' . BASEURL . '/dashboard">Buat SKTLK</a>';
+                    } else {
+                        echo '<button type="button" class="btn btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#exampleModal">
+              Buat SKTLK
+          </button>';
+                    }
+                    ?>
+                </div>
+                <div class="col-md-6 float-right">
+                    <?php Flasher::flashlog(); ?>
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav>
-                    <p class="copyright text-center">
-                        ©
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script>
-                        <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                    </p>
-                </nav>
+    </header>
+
+    <!-- Footer -->
+    <footer class="bg-light py-3">
+        <div class="small text-center text-muted">Copyright &copy; 2019 - Start Bootstrap</div>
+        </div>
+    </footer>
+    <!-- Modal tutorial-->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Tutorial</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>Melakukan Registrasi jika belum memiliki akun</li>
+                        <li>Bagi yang sudah memiliki akun bisa melakukan masuk/Login</li>
+                        <li>Setelah masuk pada aplikasi masukan data pelapor pada menu Pelapor</li>
+                        <li>Setelah memasukan data diri tambahkan data laporan kehilangan pada menu Lapor Kehilangan</li>
+                        <li>Selanjutnya anda menunggu laporan diverifikasi</li>
+                        <li>Anda akan mendapatkan Notifikasi Email jika laporan telah diverifikasi</li>
+                        <li>Terakhir Anda dapat mengambil SKTLK pada Polsek Kedaton</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                </div>
             </div>
-        </footer>
+        </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login And Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/login/masuk" method="post" onsubmit="return ceklogin();">
+                        <div class="tabcontent" id="sign-in">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                    <form action="<?= BASEURL; ?>/login/daftar" method="post" onsubmit="return cekdaftar();" id="daftar">
+                        <div class=" tabcontent" id="sign-up">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email1" aria-describedby="emailHelp" name="email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="no_hp">No HP</label>
+                                <input type="tel" class="form-control" id="no_hp" name="no_hp">
+                            </div>
+                            <div class="form-group">
+                                <label for="password1">Password</label>
+                                <input type="password" class="form-control" id="password1" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Daftar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="tablinks btn btn-info" onclick="openCity(event, 'sign-in')" id="defaultOpen">Masuk</button>
+                    <button class="tablinks btn btn-success" onclick="openCity(event, 'sign-up')">Daftar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="<?= BASEURL; ?>/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= BASEURL; ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="<?= BASEURL; ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= BASEURL; ?>/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="<?= BASEURL; ?>/js/creative.min.js"></script>
+    <script src="<?= BASEURL; ?>/js/cekform.js"></script>
+
 </body>
-<!--   Core JS Files   -->
-<script src="<?= BASEURL; ?>/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-<script src="<?= BASEURL; ?>/js/core/popper.min.js" type="text/javascript"></script>
-<script src="<?= BASEURL; ?>/js/core/bootstrap.min.js" type="text/javascript"></script>
-<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="<?= BASEURL; ?>/js/plugins/bootstrap-switch.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!--  Chartist Plugin  -->
-<script src="<?= BASEURL; ?>/js/plugins/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="<?= BASEURL; ?>/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
-<script src="<?= BASEURL; ?>/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
-<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="<?= BASEURL; ?>/js/demo.js"></script>
-<script>
-    var header_height;
-    var fixed_section;
-    var floating = false;
-
-    $(document).ready(function() {
-        suggestions_distance = $("#suggestions").offset();
-        pay_height = $('.fixed-section').outerHeight();
-
-    });
-</script>
 
 </html>

@@ -11,7 +11,7 @@ class Kehilangan_model
     public function getALLKehilangan()
     {
         // tabel kehilangan idpelapor diganati nama
-        $this->db->query('SELECT x.nama,z.* from pelapor as x, kehilangan as z where x.id_pelapor = z.id_pelapor ');
+        $this->db->query('SELECT x.nama,z.* from pelapor as x, kehilangan as z where x.id_pelapor = z.id_pelapor order by z.st_lap asc ');
         return $this->db->resultSet();
     }
     public function getKehilanganByIdP($id)

@@ -23,4 +23,17 @@ class flasher
         }
         unset($_SESSION['flash']);
     }
+    public static function flashlog()
+    {
+        if (isset($_SESSION['flash'])) {
+            echo ' <div class="alert alert-' . $_SESSION['flash']['tipe'] . '">
+                    <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
+                    <i class="nc-icon nc-simple-remove"></i>
+                    </button>
+                    <span> Anda 
+                    <b>' . $_SESSION['flash']['pesan'] . '</b> ' . $_SESSION['flash']['aksi'] . '</span>
+                    </div>';
+        }
+        unset($_SESSION['flash']);
+    }
 }

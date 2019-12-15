@@ -37,6 +37,7 @@ class App
 	//memparse url menjadi array kemudian pemisah / dibuang untuk mengambil stringnya saja kemudian di filter aagar terhindar dari url ngacok
 	public function parseURL()
 	{
+
 		if (isset($_GET['url'])) {
 			$url = rtrim($_GET['url'], '/');
 			$url = filter_var($url, FILTER_SANITIZE_URL);

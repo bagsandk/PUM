@@ -1,6 +1,9 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-6 float-right">
+                <?php Flasher::flash(); ?>
+            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">

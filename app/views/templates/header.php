@@ -13,14 +13,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="<?= BASEURL; ?>/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?= BASEURL; ?>/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <link href="<?= BASEURL; ?>/css/light-bootstrap-dashboard.css?" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="<?= BASEURL; ?>/css/demo.css" rel="stylesheet" />
+    <link href="<?= BASEURL; ?>/css/creative.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c4d767e7e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="black">
+        <div class="sidebar" data-color="abu">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -35,14 +37,14 @@
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASEURL; ?>/dashboard">
-                            <i class="nc-icon nc-icon nc-bank"></i>
+                            <i class="nc-icon nc-icon nc-bank btn-link"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <?php if (isset($_SESSION['lvladmin']) == 11) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/admin">
-                                <i class="nc-icon nc-circle-09"></i>
+                                <i class="nc-icon nc-circle-09 btn-link"></i>
                                 <p>Admin</p>
                             </a>
                         </li>
@@ -50,7 +52,7 @@
                     <?php if (isset($_SESSION['user']) || $_SESSION['lvladmin'] == 11) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/user">
-                                <i class="nc-icon nc-circle-09"></i>
+                                <i class="nc-icon nc-circle-09 btn-link"></i>
                                 <p>User</p>
                             </a>
                         </li>
@@ -58,7 +60,7 @@
                     <?php if (isset($_SESSION['user']) || $_SESSION['lvladmin'] == 11) { ?>
                         <li>
                             <a class=" nav-link" href="<?= BASEURL; ?>/Pelapor">
-                                <i class="nc-icon nc-circle-09"></i>
+                                <i class="nc-icon nc-circle-09 btn-link"></i>
                                 <p>Data Pelapor </p>
                             </a>
                         </li>
@@ -66,7 +68,7 @@
                     <?php if (isset($_SESSION['admin']) || isset($_SESSION['user'])) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/Kehilangan">
-                                <i class="nc-icon nc-notes"></i>
+                                <i class="nc-icon nc-notes btn-link"></i>
                                 <p>Lapor Kehilangan</p>
                             </a>
                         </li>
@@ -74,7 +76,7 @@
                     <?php if (isset($_SESSION['admin'])) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/Laporan">
-                                <i class="nc-icon nc-notes"></i>
+                                <i class="nc-icon nc-notes btn-link"></i>
                                 <p>Laporan Kehilangan</p>
                             </a>
                         </li>
@@ -108,7 +110,7 @@
                                 </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= BASEURL; ?>/login/keluar">
-                                    <span class="nc-icon nc-button-power"> Log out</span>
+                                    <span class="nc-icon nc-button-power btn-link"> Log out</span>
                                 </a>
                             </li>
                         </ul>

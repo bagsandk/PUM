@@ -1,9 +1,17 @@
 <?php
 class Login extends Controller
 {
+    public function __construct()
+    { }
     public function index()
     {
-        $this->view('login/index');
+        if (isset($_SESSION['id'])) {
+            header('Location: ' . BASEURL . '/dashboard');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/home');
+            exit;
+        }
     }
 
     public function masuk()
@@ -11,25 +19,30 @@ class Login extends Controller
         $data['user'] = $this->model('Login_model')->auth_user($_POST);
         $data['admin'] = $this->model('Login_model')->auth_admin($_POST);
         if ($data['user'] > 0) {
+            $_SESSION['id'] = 'user';
             $_SESSION['user'] = $data['user']['id_user'];
             $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
             $_SESSION['pelapor'] = $data['pelapor']['id_pelapor'];
+            flasher::setFlash('Berhasil', 'Login', 'success');
             header('Location: ' . BASEURL . '/dashboard');
             exit;
         } elseif ($data['admin'] > 0) {
+            $_SESSION['id'] = 'admin';
             $_SESSION['admin'] = $data['admin']['id_admin'];
             $_SESSION['lvladmin'] = $data['admin']['lvl'];
             $_SESSION['unadmin'] = $data['admin']['username'];
+            flasher::setFlash('Berhasil', 'Login', 'success');
             header('Location: ' . BASEURL . '/dashboard');
             exit;
         }
-        flasher::setFlash('Gagal', 'Login', 'danger');
-        header('Location: ' . BASEURL . '/login');
+        flasher::setFlash('Salah', 'Memasukan Username/Password', 'danger');
+        header('Location: ' . BASEURL . '/Dashboard');
         exit;
     }
     public function keluar()
     {
         unset($_SESSION['user']);
+        unset($_SESSION['id']);
         unset($_SESSION['admin']);
         unset($_SESSION['lvladmin']);
         unset($_SESSION['unadmin']);
@@ -40,7 +53,11 @@ class Login extends Controller
         if ($this->model('User_model')->tambahDataUser($_POST) > 0) {
             $data['user'] = $this->model('Login_model')->auth_user($_POST);
             $_SESSION['user'] = $data['user']['id_user'];
-            flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
+            $_SESSION['id'] = 'user';
+            $_SESSION['user'] = $data['user']['id_user'];
+            $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
+            $_SESSION['pelapor'] = $data['pelapor']['id_pelapor'];
+            flasher::setFlash('Berhasil', 'Daftar', 'success');
             header('Location: ' . BASEURL . '/User');
             exit;
         } else {

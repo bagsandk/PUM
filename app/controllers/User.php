@@ -2,6 +2,17 @@
 
 class User extends Controller
 {
+    public function __construct()
+    {
+        if (!isset($_SESSION['id'])) {
+            header('Location: ' . BASEURL . '/login');
+            exit;
+        }
+        if (isset($_SESSION['lvladmin']) && ($_SESSION['lvladmin']) < 11) {
+            header('Location: ' . BASEURL . '/login');
+            exit;
+        }
+    }
 
     public function index()
     {
@@ -36,11 +47,13 @@ class User extends Controller
 
     public function edit($id)
     {
-        $data['judul'] = 'Ubah Data User';
-        $data['user'] = $this->model('User_model')->getUserById($id);
-        $this->view('templates/header', $data);
-        $this->view('user/edit', $data);
-        $this->view('templates/footer');
+        if (isset($_SESSION['admin'])) {
+            $data['judul'] = 'Ubah Data User';
+            $data['user'] = $this->model('User_model')->getUserById($id);
+            $this->view('templates/header', $data);
+            $this->view('user/edit', $data);
+            $this->view('templates/footer');
+        }
     }
 
     public function getedit()

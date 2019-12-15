@@ -52,5 +52,6 @@
 <script src="<?= BASEURL; ?>/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?= BASEURL; ?>/js/demo.js"></script>
+<script src="<?= BASEURL; ?>/js/cekform.js"></script>
 
 </html>

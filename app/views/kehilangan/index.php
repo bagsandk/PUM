@@ -8,7 +8,7 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Tabel Kehilangan</h4>
-                        <a href="<?= BASEURL ?>/kehilangan/tambah"><button type="button" class="btn btn-primary nc-icon nc-simple-add pull-right"></button></a>
+                        <a href="<?= BASEURL ?>/kehilangan/tambah"><button type="button" class="btn btn-primary fas fa-keyboard pull-right"></button></a>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -36,15 +36,18 @@
                                         <td><?= $row['ket']; ?></td>
                                         <td><?= $row['tgl_hilang']; ?></td>
                                         <td><?= $row['tempat']; ?></td>
-                                        <td><?php if ($row['st_lap'] == 0) {
-                                                    echo 'Belum Diverifikasi';
-                                                } else {
+                                        <td><?php if ($row['st_lap'] == 1) {
                                                     echo 'Terverifikasi';
+                                                } elseif ($row['st_lap'] == 2) {
+                                                    echo 'Ditolak';
+                                                } else {
+                                                    echo 'Belum Diverifikasi';
                                                 } ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/kehilangan/detail/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-info"></i></a>
-                                            <a href="<?= BASEURL; ?>/kehilangan/edit/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/kehilangan/hapus/<?= $row['id_kehilangan']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/kehilangan/detail/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-sm "> <i class="fa fa-info"></i></a>
+                                            <?php if (isset($_SESSION['lvladmin']) == 11 || $_SESSION['id'] == 'user') : ?><a href="<?= BASEURL; ?>/kehilangan/edit/<?= $row['id_kehilangan']; ?>" class="btn btn-warning btn-sm "> <i class="fa fa-edit"></i></a>
+                                                <a href="<?= BASEURL; ?>/kehilangan/hapus/<?= $row['id_kehilangan']; ?>" class="btn btn-sm btn-danger " onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

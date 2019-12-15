@@ -2,6 +2,17 @@
 
 class Pelapor extends Controller
 {
+    public function __construct()
+    {
+        if (!isset($_SESSION['id'])) {
+            header('Location: ' . BASEURL . '/login');
+            exit;
+        }
+        // if (isset($_SESSION['lvladmin']) == 11) {
+        //     header('Location: ' . BASEURL . '/dashboard');
+        //     exit;
+        // }
+    }
 
     public function index()
     {
@@ -23,11 +34,13 @@ class Pelapor extends Controller
 
     public function tambah()
     {
-        $data['user'] = $this->model('User_model')->getUserNotIn();
-        $data['judul'] = 'Tambah Pelapor';
-        $this->view('templates/header', $data);
-        $this->view('pelapor/tambah', $data);
-        $this->view('templates/footer');
+        if (isset($_SESSION['admin'])) {
+            $data['user'] = $this->model('User_model')->getUserNotIn();
+            $data['judul'] = 'Tambah Pelapor';
+            $this->view('templates/header', $data);
+            $this->view('pelapor/tambah', $data);
+            $this->view('templates/footer');
+        }
     }
     public function tambahdata()
     {
@@ -44,11 +57,13 @@ class Pelapor extends Controller
 
     public function edit($id)
     {
-        $data['judul'] = 'Ubah Data Pelapor';
-        $data['pelapor'] = $this->model('Pelapor_model')->getPelaporById($id);
-        $this->view('templates/header', $data);
-        $this->view('pelapor/edit', $data);
-        $this->view('templates/footer');
+        if (isset($_SESSION['admin'])) {
+            $data['judul'] = 'Ubah Data Pelapor';
+            $data['pelapor'] = $this->model('Pelapor_model')->getPelaporById($id);
+            $this->view('templates/header', $data);
+            $this->view('pelapor/edit', $data);
+            $this->view('templates/footer');
+        }
     }
     //SELECT * FROM `user` as x INNER JOIN pelapor as z ON x.id_user = z.id_user WHERE z.id_user = 22
     public function getedit()

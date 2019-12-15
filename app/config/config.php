@@ -1,5 +1,5 @@
-<?php 
-define('BASEURL','http://localhost/PUM/public');
+<?php
+define('BASEURL', 'http://localhost/PUM/public');
 
 //DB
 define('DB_HOST', 'localhost');

@@ -1,6 +1,9 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-6 float-right">
+                <?php Flasher::flash(); ?>
+            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -8,20 +11,24 @@
                     </div>
                     <div class="card-body">
                         <form action="<?= BASEURL; ?>/kehilangan/getedit" method="post">
-                            <div class="row">
-                                <div class="col-md-6 pr-1">
-                                    <input type="hidden" class="form-control" id="id_kehilangan" name="id_kehilangan" value="<?= $data['kehilangan']['id_kehilangan']; ?>">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Pelapor</label>
-                                        <select class="form-control" id="id_pelapor" name="id_pelapor" placeholder="Data Pelapor">
-                                            <option value="<?= $data['kehilangan']['id_pelapor'] ?>" selected="selected"><?= $data['kehilangan']['nama'] ?></option>
-                                            <?php foreach ($data['pelapor'] as $row) {
-                                                echo '<option value="' . $row['id_pelapor'] . '">ID : ' . $row['id_pelapor'] . ' => Nama Pelapor : ' . $row['nama'] . '</option>';
-                                            } ?>
-                                        </select>
+                            <input type="hidden" class="form-control" id="id_kehilangan" name="id_kehilangan" value="<?= $data['kehilangan']['id_kehilangan']; ?>">
+                            <?php if (isset($_SESSION['user']) || isset($_SESSION['lvladmin']) == 10) : ?>
+                                <input type="hidden" class="form-control" id="id_pelapor" name="id_pelapor" value="<?= $data['kehilangan']['id_pelapor']; ?>">
+                            <?php else : ?>
+                                <div class="row">
+                                    <div class="col-md-6 pr-1">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Pelapor</label>
+                                            <select class="form-control" id="id_pelapor" name="id_pelapor" placeholder="Data Pelapor">
+                                                <option value="<?= $data['kehilangan']['id_pelapor'] ?>" selected="selected"><?= $data['kehilangan']['nama'] ?></option>
+                                                <?php foreach ($data['kehilangan'] as $row) {
+                                                        echo '<option value="' . $row['id_pelapor'] . '">ID : ' . $row['id_pelapor'] . ' => Nama Pelapor : ' . $row['nama'] . '</option>';
+                                                    } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endif ?>
                             <div class="row">
                                 <div class="col-md-6 pr-1">
                                     <div class="form-group">

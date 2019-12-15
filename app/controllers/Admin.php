@@ -4,8 +4,8 @@ class Admin extends Controller
 {
 	public function __construct()
 	{
-		if (!isset($_SESSION['lvladmin']) == 11) {
-			header('Location: ' . BASEURL . '/dashboard');
+		if (!isset($_SESSION['id'])) {
+			header('Location: ' . BASEURL . '/login');
 			exit;
 		}
 	}
@@ -42,6 +42,10 @@ class Admin extends Controller
 
 	public function edit($id)
 	{
+		if ($_SESSION['lvladmin'] == 10) {
+			header('Location: ' . BASEURL . '/admin');
+			exit;
+		}
 		// if ($this->model('Admin_model')->tambahDataAdmin($_POST) > 0) {
 		// 	flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
 		// 	header('Location: ' . BASEURL . '/Admin');
@@ -73,6 +77,14 @@ class Admin extends Controller
 
 	public function hapus($id)
 	{
+		if ($_SESSION['lvladmin'] == 10) {
+			header('Location: ' . BASEURL . '/admin');
+			exit;
+		}
+		if ($_SESSION['lvladmin'] == 10) {
+			header('Location: ' . BASEURL . '/dashboard');
+			exit;
+		}
 		if ($this->model('Admin_model')->hapusDataAdmin($id) > 0) {
 			flasher::setFlash('Berhasil', 'Dihapus', 'success');
 			header('Location: ' . BASEURL . '/Admin');

@@ -8,7 +8,7 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Tabel Pelapor</h4>
-                        <a href="<?= BASEURL; ?>/pelapor/tambah"><button type="button" class="btn btn-primary nc-icon nc-simple-add pull-right"></button></a>
+                        <a href="<?= BASEURL; ?>/pelapor/tambah"><button type="button" class="btn btn-primary fas fa-keyboard pull-right"></button></a>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -26,7 +26,7 @@
                                     <th>Status</th>
                                     <th>Pekerjaan</th>
                                     <th>KWN</th>
-                                    <th>Tanggal Lapor</th>
+                                    <!-- <th>Tanggal Lapor</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -50,7 +50,7 @@
                                         <td><?= $row['status']; ?></td>
                                         <td><?= $row['pekerjaan']; ?></td>
                                         <td><?= $row['kwn']; ?></td>
-                                        <td><?= $row['tgl_data']; ?></td>
+                                        <!-- <td><?= $row['tgl_data']; ?></td> -->
                                         <td class="td-actions text-right">
                                             <a href="<?= BASEURL; ?>/pelapor/edit/<?= $row['id_pelapor']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
                                             <a href="<?= BASEURL; ?>/pelapor/hapus/<?= $row['id_pelapor']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>

@@ -1,13 +1,16 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-6 float-right">
+                <?php Flasher::flash(); ?>
+            </div>
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Data User</h4>
                     </div>
                     <div class="card-body">
-                        <form action="<?= BASEURL; ?>/user/getedit" method="post" enctype="multipart/form-data">
+                        <form action="<?= BASEURL; ?>/user/getedit" method="post" enctype="multipart/form-data" onsubmit="return cekedituser();">
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $data['user']['id_user']; ?>">
                             </div>
@@ -15,7 +18,7 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" value="<?= $data['user']['email']; ?>">
+                                        <input type="email" class="form-control" id="emailu" name="email" value="<?= $data['user']['email']; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -23,7 +26,7 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>NO HP</label>
-                                        <input type="number" class="form-control" id="no_hp" name="no_hp" size="13" value="<?= $data['user']['no_hp']; ?>">
+                                        <input type="number" class="form-control" id="no_hpu" name="no_hp" size="13" value="<?= $data['user']['no_hp']; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +34,8 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" value="<?= $data['user']['password']; ?>">
+                                        <input type="password" class="form-control" id="password" name="password">
+                                        <small id="emailHelp" class="form-text text-muted">biarkan kosong jika tidak di ubah</small>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +48,9 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
-                            <a href="<?= BASEURL; ?>/user" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
+                            <?php if (!isset($_SESSION['user'])) : ?>
+                                <a href="<?= BASEURL; ?>/user" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
+                            <?php endif ?>
                             <div class="clearfix"></div>
                         </form>
                     </div>

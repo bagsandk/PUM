@@ -691,6 +691,18 @@ body>.navbar-collapse[data-color="purple"]:after {
     background-size: 150% 150%;
 }
 
+.sidebar[data-color="abu"]:after,
+body>.navbar-collapse[data-color="abu"]:after {
+    background: rgb(27, 27, 26);
+    background: -moz-linear-gradient(top, rgba(27, 26, 25, 0.8) 0%, #302605 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(92, 77, 66, 0.8)), color-stop(100%, #943bea));
+    background: -webkit-linear-gradient(top, rgba(12, 12, 11, 0.8) 0%, #33281b 100%);
+    background: -o-linear-gradient(top, rgba(22, 22, 21, 0.8) 0%, #2b271b 100%);
+    background: -ms-linear-gradient(top, rgba(27, 18, 11, 0.8) 0%, #2c2011 100%);
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%);
+    background-size: 150% 150%;
+}
+
 .main-panel {
     background: rgba(203, 203, 210, 0.15);
     position: relative;
@@ -806,13 +818,13 @@ body>.navbar-collapse[data-color="purple"]:after {
     right: -15px;
 }
 
-.modal.show .modal-dialog {
+/* .modal.show .modal-dialog {
     -webkit-transform: translate(0, 30%);
     -o-transform: translate(0, 30%);
     transform: translate(0, 30%);
-}
+} */
 
-.modal.modal-mini .modal-dialog {
+/* .modal.modal-mini .modal-dialog {
     max-width: 255px;
     margin: 0 auto;
 }
@@ -870,7 +882,7 @@ body>.navbar-collapse[data-color="purple"]:after {
 .modal .modal-content .modal-footer .btn:hover,
 .modal .modal-content .modal-footer .btnfocus {
     text-decoration: none;
-}
+} */
 
 .btn {
     border-width: 2px;

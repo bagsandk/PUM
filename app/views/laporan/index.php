@@ -8,7 +8,7 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Tabel Laporan Kehilangan</h4>
-                        <button type="button" class="btn btn-primary nc-icon nc-simple-add pull-right" data-toggle="modal" data-target="#exampleModalLong"></button>
+                        <button type="button" class="btn btn-primary fas fa-keyboard pull-right" data-toggle="modal" data-target="#exampleModalLong"></button>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -34,7 +34,7 @@
                                         <td><?= $row['tgl_surat']; ?></td>
                                         <td><?= $row['waktu']; ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-info btn-simple "> <i class="fa fa-edit"></i></a>
                                             <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
