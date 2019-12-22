@@ -9,19 +9,6 @@ function cekdaftar() {
         $("#no_hp").focus();
         return false;
     }
-    var nomor_hp = document.forms["daftar"]["no_hp"].value;
-    var number = /^[0-9]+$/;
-    if (!nomor_hp.match(number)) {
-        alert("No Hp harus angka !");
-        $("#no_hp").focus();
-        return false;
-    };
-
-    if (nomor_hp.length != 11) {
-        alert("No Hp Minimal 11 Digit");
-        $("#no_hp").focus();
-        return false;
-    };
     if (!$('#password1').val()) {
         alert('Password tidak boleh kosong  ');
         $("#password1").focus();
