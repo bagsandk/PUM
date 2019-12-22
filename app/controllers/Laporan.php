@@ -23,6 +23,16 @@ class Laporan extends Controller
         $this->view('laporan/index', $data);
         $this->view('templates/footer');
     }
+    public function detail($id)
+    {
+        $data['laporan'] = $this->model('Laporan_model')->getLaporanByIdKel($id);
+        $data['kel'] = $this->model('Kehilangan_model')->getALLKehilangan();
+        $data['kehilangan'] = $this->model('Kehilangan_model')->getALLKehilanganById($id);
+        $data['judul'] = 'Laporan';
+        $this->view('templates/header', $data);
+        $this->view('laporan/detail', $data);
+        $this->view('templates/footer');
+    }
 
     public function tambah()
     {

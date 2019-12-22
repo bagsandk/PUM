@@ -19,6 +19,12 @@ class Laporan_model
         $this->db->bind('id_lap', $id);
         return $this->db->single();
     }
+    public function getLaporanByIdKel($id)
+    {
+        $this->db->query('select * from ' . $this->table . ' where id_kehilangan = :id_kehilangan');
+        $this->db->bind('id_kehilangan', $id);
+        return $this->db->single();
+    }
     public function tambahDataLaporan($data)
     {
         $query = "INSERT INTO " . $this->table . " VALUES ('',:id_kehilangan, :no_surat, :tgl_surat, :waktu)";
@@ -27,6 +33,19 @@ class Laporan_model
         $this->db->bind('no_surat', $data['no_surat']);
         $this->db->bind('tgl_surat', $data['tgl_surat']);
         $this->db->bind('waktu', $data['waktu']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+    public function tambahLaporan($id)
+    {
+        $query = "INSERT INTO " . $this->table . " VALUES ('',:id_kehilangan, :no_surat, :tgl_surat, :waktu)";
+        $this->db->query($query);
+        $this->db->bind('id_kehilangan', $id);
+        $this->db->bind('no_surat', random_int(1, 100));
+        $this->db->bind('tgl_surat', date('Y-m-d', time()));
+        $this->db->bind('waktu', date('H:i', time()));
 
         $this->db->execute();
 

@@ -44,4 +44,8 @@ class Controller
 		$day = date('D', strtotime($hari));
 		return $konv[$day];
 	}
+	public function waktu($waktu)
+	{
+		return date('H:i', strtotime($waktu));
+	}
 }

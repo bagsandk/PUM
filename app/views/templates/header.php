@@ -9,7 +9,7 @@
     <title><?= $data['judul']; ?></title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="<?= BASEURL; ?>/css/bootstrap.min.css" rel="stylesheet" />
@@ -17,7 +17,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="<?= BASEURL; ?>/css/demo.css" rel="stylesheet" />
     <link href="<?= BASEURL; ?>/css/creative.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/8c4d767e7e.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/8c4d767e7e.js" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <?php if (isset($_SESSION['lvladmin']) == 11) { ?>
+                    <?php if (isset($_SESSION['admin']) && $_SESSION['lvladmin'] == 11) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/admin">
                                 <i class="nc-icon nc-circle-09 btn-link"></i>
@@ -49,7 +49,7 @@
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['user']) || $_SESSION['lvladmin'] == 11) { ?>
+                    <?php if (isset($_SESSION['admin']) && $_SESSION['lvladmin'] == 11) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/user">
                                 <i class="nc-icon nc-circle-09 btn-link"></i>
@@ -65,7 +65,7 @@
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['admin']) || isset($_SESSION['user'])) { ?>
+                    <?php if (isset($_SESSION['admin']) || isset($_SESSION['pelapor'])) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/Kehilangan">
                                 <i class="nc-icon nc-notes btn-link"></i>
@@ -96,22 +96,28 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
                                     <span class="d-lg-none">Dashboard</span>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <!-- <li class="nav-item">
-                                    <a class="nav-link" href="#pablo">
-                                        <span class="no-icon">Account</span>
-                                    </a>
-                                </li> -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= BASEURL; ?>/login/keluar">
-                                    <span class="nc-icon nc-button-power btn-link"> Log out</span>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="no-icon"><?php if (isset($_SESSION['nama'])) {
+                                                                echo $_SESSION['nama'];
+                                                            } else {
+                                                                echo 'Lengkapi Profil';
+                                                            } ?></span>
                                 </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <?php if (isset($_SESSION['user'])) : ?> <a class="dropdown-item" href="<?= BASEURL ?>/user">Profil</a>
+                                    <?php elseif (isset($_SESSION['admin'])) : ?>
+                                        <a class="dropdown-item" href="<?= BASEURL ?>/admin">Profil</a>
+                                    <?php endif ?>
+                                    <a class="dropdown-item" href="<?= BASEURL; ?>/login/keluar">Log out</a>
+                                </div>
                             </li>
                         </ul>
                     </div>

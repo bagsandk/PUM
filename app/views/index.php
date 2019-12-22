@@ -162,7 +162,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="no_hp">No HP</label>
-                                <input type="tel" class="form-control" id="no_hp" name="no_hp">
+                                <input type="tel" class="form-control" onkeypress=" return angka(event);" id="no_hp" name="no_hp" maxlength="13" minlength="11">
                             </div>
                             <div class="form-group">
                                 <label for="password1">Password</label>
@@ -196,6 +196,14 @@
 
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
+    </script>
+    <script type="text/javascript">
+        function angka(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
     </script>
     <!-- Bootstrap core JavaScript -->
     <script src="<?= BASEURL; ?>/vendor/jquery/jquery.min.js"></script>

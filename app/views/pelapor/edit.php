@@ -19,7 +19,7 @@
                                 <div class="col-md-6 pr-1">
                                     <div class="form-group">
                                         <label>NIK</label>
-                                        <input type="number" maxlength="16" class="form-control" id="nik" name="nik" value="<?= $data['pelapor']['nik']; ?>" required>
+                                        <input type="text" maxlength="16" onkeypress="return angka(event);" class="form-control" id="nik" name="nik" value="<?= $data['pelapor']['nik']; ?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pl-1">

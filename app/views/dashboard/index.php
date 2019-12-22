@@ -1,3 +1,6 @@
+<div class="col-md-4 mb-0">
+  <?php Flasher::flashlog(); ?>
+</div>
 <div class="content">
   <div class="hero-image">
     <div class="hero-text">

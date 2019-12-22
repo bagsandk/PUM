@@ -81,6 +81,9 @@ class Pelapor extends Controller
         } else {
             if ($this->model('Pelapor_model')->tambahDataPelapor($_POST) > 0) {
                 flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
+                $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
+                $_SESSION['pelapor'] = $data['pelapor']['id_pelapor'];
+                $_SESSION['nama'] = $data['pelapor']['nama'];
                 header('Location: ' . BASEURL . '/Pelapor');
                 exit;
             } else {

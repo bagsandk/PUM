@@ -36,6 +36,14 @@
 </div>
 </div>
 </body>
+<script type="text/javascript">
+    function angka(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>
 <!--   Core JS Files   -->
 <script src="<?= BASEURL; ?>/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="<?= BASEURL; ?>/js/core/popper.min.js" type="text/javascript"></script>

@@ -15,7 +15,7 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>Id Kehilangan</label>
-                                        <input type="text" class="form-control" id="id_kehilangan" name="id_kehilangan" value="<?= $data['laporan']['id_kehilangan']; ?>">
+                                        <input type="text" class="form-control" id="id_kehilangan" readonly name="id_kehilangan" value="<?= $data['laporan']['id_kehilangan']; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -23,7 +23,7 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>No Surat</label>
-                                        <input type="text" class="form-control" id="no_surat" name="no_surat" value="<?= $data['laporan']['no_surat']; ?>">
+                                        <input type="text" onkeypress="return angka(event);" class="form-control" id="no_surat" name="no_surat" value="<?= $data['laporan']['no_surat']; ?>">
                                     </div>
                                 </div>
                             </div>

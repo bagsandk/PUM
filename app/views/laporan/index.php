@@ -8,7 +8,9 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Tabel Laporan Kehilangan</h4>
-                        <button type="button" class="btn btn-primary fas fa-keyboard pull-right" data-toggle="modal" data-target="#exampleModalLong"></button>
+                        <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
+                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-plus "></i> </button>
+                        <?php endif ?>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -26,7 +28,7 @@
                             <tbody>
                                 <?php $no = 1;
                                 foreach ($data['laporan'] as $row) :
-                                    ?>
+                                ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
                                         <td><?= $row['id_kehilangan']; ?></td>
@@ -34,8 +36,10 @@
                                         <td><?= $row['tgl_surat']; ?></td>
                                         <td><?= $row['waktu']; ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-info btn-simple "> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/laporan/detail/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-sm"> <i class="fa fa-info"></i></a>
+                                            <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-warning btn-sm ml-1"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class="btn btn-sm btn-danger ml-1" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class=" pull-right btn btn-sm btn-success ml-3" onclick="return confirm('yakin?');">Cetak ulang</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

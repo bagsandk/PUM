@@ -27,14 +27,14 @@
                     <div class="t m0 x2 h2 y5 ff1 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x2 h2 y6 ff1 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x3 h3 y7 ff2 fs0 fc0 sc0 ls0 ws0">SURAT KETERANGAN TANDA LAPOR KEHILANGAN </div>
-                    <div class="t m0 x4 h3 y8 ff2 fs0 fc0 sc0 ls0 ws0">Nomor : SKTLK / 04 / XXV / 2019 / SPKT </div>
+                    <div class="t m0 x4 h3 y8 ff2 fs0 fc0 sc0 ls0 ws0">Nomor : SKTLK / <?= $data['lap']['no_surat'] ?> / XXV / 2019 / SPKT </div>
                     <div class="t m0 x2 h2 y9 ff1 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x2 h4 ya ff3 fs0 fc0 sc0 ls0 ws0">Yang <span class="_ _0"></span>bertanda <span class="_ _0"></span>tangan <span class="_ _0"></span>dibawah <span class="_ _0"></span>ini <span class="_ _1"></span>Kepala <span class="_ _0"></span>Kepolisian <span class="_ _0"></span>Sektor <span class="_ _0"></span>Kedaton <span class="_ _0"></span>Ban<span class="_ _2"></span>dar </div>
-                    <div class="t m0 x5 h4 yb ff3 fs0 fc0 sc0 ls0 ws0">Lampung menerangkan pada hari Rabu tanggal <span class="_ _2"></span> 15 <span class="_ _2"></span>Desember 2019, <span class="_ _2"></span>Pukul 10.00 <span class="_ _2"></span>WIB </div>
+                    <div class="t m0 x5 h4 yb ff3 fs0 fc0 sc0 ls0 ws0">Lampung menerangkan pada hari <?= $data['harib'] ?> tanggal <span class="_ _2"></span><?= $data['tglb'] ?>, <span class="_ _2"></span>Pukul <?= date('h:i', strtotime($data['waktu'])) ?> <span class="_ _2"></span>WIB </div>
                     <div class="t m0 x5 h4 yc ff3 fs0 fc0 sc0 ls0 ws0">telah datang seseorang laki-laki yang mengaku beridentitas : </div>
                     <div class="t m0 x5 h4 yd ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 ye ff3 fs0 fc0 sc0 ls0 ws0">Nama <span class="_ _3"> </span> <span class="_ _4"> </span> <span class="_ _4"> </span>: <?= $data['kel']['nama'] ?> </div>
-                    <div class="t m0 x5 h4 yf ff3 fs0 fc0 sc0 ls0 ws0">Tempat/Tgl Lahir <span class="_ _5"> </span>: <?= $data['kel']['tmp_lahir'] ?> / <?= $data['tgl'] ?> </div>
+                    <div class="t m0 x5 h4 yf ff3 fs0 fc0 sc0 ls0 ws0">Tempat/Tgl Lahir <span class="_ _5"> </span>: <?= $data['kel']['tmp_lahir'] ?> / <?= $data['tgll'] ?> </div>
                     <div class="t m0 x5 h4 y10 ff3 fs0 fc0 sc0 ls0 ws0">Agama <span class="_ _6"></span> <span class="_ _4"> </span> <span class="_ _4"> </span>: <?= $data['kel']['agama'] ?> </div>
                     <div class="t m0 x5 h4 y11 ff3 fs0 fc0 sc0 ls0 ws0">Pekerjaan <span class="_ _7"> </span> <span class="_ _4"> </span>: <?= $data['kel']['pekerjaan'] ?> </div>
                     <div class="t m0 x5 h4 y12 ff3 fs0 fc0 sc0 ls0 ws0">Kewarganegaraan <span class="_ _8"> </span>: <?= $data['kel']['kwn'] ?> </div>
@@ -47,7 +47,7 @@
                     <div class="t m0 x5 h4 y19 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x6 h5 y1a ff3 fs0 fc0 sc0 ls0 ws0"><span class="ff4"> <span class="_ _c"> </span></span> </div>
                     <div class="t m0 x5 h4 y1b ff3 fs0 fc0 sc0 ls0 ws0"> </div>
-                    <div class="t m0 x5 h4 y1c ff3 fs0 fc0 sc0 ls0 ws0">Terjadi pada hari <span class="_ _d"> </span> <span> :</span> <?= $data['hari'] ?>, <?= $data['tgl'] ?> Sekitar pukul <?= $data['kel']['pukul'] ?> WIB </div>
+                    <div class="t m0 x5 h4 y1c ff3 fs0 fc0 sc0 ls0 ws0">Terjadi pada hari <span class="_ _d"> </span> <span> :</span> <?= $data['harih'] ?>, <?= $data['tglh'] ?> Sekitar pukul <?= date('h:i', strtotime($data['pukul'])) ?> WIB </div>
                     <div class="t m0 x5 h4 y1d ff3 fs0 fc0 sc0 ls0 ws0">Diperkirakan di <span class="_ _e"> </span>:<span> <?= $data['kel']['tempat'] ?> </div>
                     <div class="t m0 x5 h4 y1e ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 y1f ff3 fs0 fc0 sc0 ls0 ws0"> </div>
@@ -65,7 +65,7 @@
                     <div class="t m0 x7 h2 y2b ff1 fs0 fc0 sc0 ls0 ws0">pelanggaran sebagaimana di maksud dalam pasal 266 KUHP. </div>
                 </div>
                 <div class="c x8 y2c w3 h7">
-                    <div class="t m0 x9 h4 y2d ff3 fs0 fc0 sc0 ls0 ws0">Bandar Lampung, 15 Desember 2019 </div>
+                    <div class="t m0 x9 h4 y2d ff3 fs0 fc0 sc0 ls0 ws0">Bandar Lampung, <?= $data['tglb']; ?> </div>
                     <div class="t m0 xa h4 y2e ff3 fs0 fc0 sc0 ls0 ws0">a.n KAPOLSEK KEDATON BANDAR LAMPUNG. </div>
                     <div class="t m0 xb h4 y2f ff3 fs0 fc0 sc0 ls0 ws0">KA SPKT </div>
                     <div class="t m0 x3 h4 y30 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
@@ -85,7 +85,7 @@
                     <div class="t m0 xf h4 y3d ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 y3e ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 y3f ff3 fs0 fc0 sc0 ls0 ws0"> </div>
-                    <div class="t m0 xe h4 y40 ff3 fs0 fc0 sc0 ls0 ws0"><u><?= $data['kel']['nama'] ?></u></div>
+                    <div class="t m0 x9 h4 y40 ff3 fs0 fc0 sc0 ls0 ws0"><u><?= $data['kel']['nama'] ?></u></div>
                     <div class="t m0 x5 h4 y41 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 y42 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 y43 ff3 fs0 fc0 sc0 ls0 ws0"> </div>

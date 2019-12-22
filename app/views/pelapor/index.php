@@ -8,7 +8,7 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Tabel Pelapor</h4>
-                        <a href="<?= BASEURL; ?>/pelapor/tambah"><button type="button" class="btn btn-primary fas fa-keyboard pull-right"></button></a>
+                        <a href="<?= BASEURL; ?>/pelapor/tambah"><button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus "></i> </button></a>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -33,7 +33,7 @@
                             <tbody>
                                 <?php $no = 1;
                                 foreach ($data['pelapor'] as $row) :
-                                    ?>
+                                ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
                                         <td><?= $row['nama']; ?></td>
@@ -41,10 +41,10 @@
                                         <td><?= $row['tmp_lahir']; ?></td>
                                         <td><?= $row['tgl_lahir']; ?></td>
                                         <td><?php if ($row['jk'] == 'L') {
-                                                    echo 'Laki-laki';
-                                                } else {
-                                                    echo 'Perempuan';
-                                                } ?></td>
+                                                echo 'Laki-laki';
+                                            } else {
+                                                echo 'Perempuan';
+                                            } ?></td>
                                         <td><?= $row['agama']; ?></td>
                                         <td><?= $row['alamat']; ?></td>
                                         <td><?= $row['status']; ?></td>
@@ -52,8 +52,8 @@
                                         <td><?= $row['kwn']; ?></td>
                                         <!-- <td><?= $row['tgl_data']; ?></td> -->
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/pelapor/edit/<?= $row['id_pelapor']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/pelapor/hapus/<?= $row['id_pelapor']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/pelapor/edit/<?= $row['id_pelapor']; ?>" class="btn btn-info btn-sm mr-1"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/pelapor/hapus/<?= $row['id_pelapor']; ?>" class="btn btn-sm btn-danger " onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

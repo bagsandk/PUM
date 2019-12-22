@@ -16,6 +16,7 @@ class User extends Controller
 
     public function index()
     {
+        $data['nama'] = 'Lengkapi Profil';
         if (!isset($_SESSION['user'])) {
             $data['user'] = $this->model('User_model')->getALLUser();
             $data['judul'] = 'User';
@@ -23,8 +24,14 @@ class User extends Controller
             $this->view('user/index', $data);
             $this->view('templates/footer');
         } else {
+
             $data['user'] = $this->model('User_model')->getUserById($_SESSION['user']);
             $data['judul'] = 'User';
+            if (isset($_SESSION['nama'])) {
+                $data['nama'] = $_SESSION['nama'];
+            } else {
+                $data['nama'];
+            }
             $this->view('templates/header', $data);
             $this->view('user/edit', $data);
             $this->view('templates/footer');

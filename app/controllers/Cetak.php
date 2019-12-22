@@ -14,10 +14,33 @@ class cetak extends Controller
     }
     public function index($id)
     {
-        $data['kel'] = $this->model('Kehilangan_model')->getALLKehilanganById($id);
-        $data['hari'] = $this->hari($data['kel']['tgl_hilang']);
-        $data['tgl'] = $this->tgl_indo($data['kel']['tgl_hilang']);
-        $this->view('cetak/cetak', $data);
+        $data['lap'] = $this->model('Laporan_model')->getLaporanByIdKel($id);
+        if ($data['lap'] !== null) {
+            $data['kel'] = $this->model('Kehilangan_model')->getALLKehilanganById($id);
+            $data['harih'] = $this->hari($data['kel']['tgl_hilang']);
+            $data['tglh'] = $this->tgl_indo($data['kel']['tgl_hilang']);
+            $data['pukul'] = $this->tgl_indo($data['kel']['pukul']);
+
+            $data['tgll'] = $this->tgl_indo($data['kel']['tgl_lahir']);
+
+            $data['harib'] = $this->hari($data['lap']['tgl_surat']);
+            $data['tglb'] = $this->tgl_indo($data['lap']['tgl_surat']);
+            $data['waktu'] = $this->tgl_indo($data['lap']['waktu']);
+            $this->view('cetak/cetak', $data);
+        } else {
+            $this->model('Laporan_model')->tambahLaporan($id);
+            $data['kel'] = $this->model('Kehilangan_model')->getALLKehilanganById($id);
+            $data['harih'] = $this->hari($data['kel']['tgl_hilang']);
+            $data['tglh'] = $this->tgl_indo($data['kel']['tgl_hilang']);
+            $data['pukul'] = $this->waktu($data['kel']['pukul']);
+
+            $data['tgll'] = $this->tgl_indo($data['kel']['tgl_lahir']);
+
+            $data['harib'] = $this->hari($data['lap']['tgl_surat']);
+            $data['tglb'] = $this->tgl_indo($data['lap']['tgl_surat']);
+            $data['waktu'] = $this->waktu($data['lap']['waktu']);
+            $this->view('cetak/cetak', $data);
+        }
     }
     public function verif()
     {

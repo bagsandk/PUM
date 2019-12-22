@@ -8,7 +8,9 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Tabel Kehilangan</h4>
-                        <a href="<?= BASEURL ?>/kehilangan/tambah"><button type="button" class="btn btn-primary fas fa-keyboard pull-right"></button></a>
+                        <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
+                            <a href="<?= BASEURL ?>/kehilangan/tambah"><button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus "></i> </button></a>
+                        <?php endif ?>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -28,7 +30,7 @@
                             <tbody>
                                 <?php $no = 1;
                                 foreach ($data['kehilangan'] as $row) :
-                                    ?>
+                                ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
                                         <td><?= $row['nama']; ?></td>
@@ -37,16 +39,16 @@
                                         <td><?= $row['tgl_hilang']; ?></td>
                                         <td><?= $row['tempat']; ?></td>
                                         <td><?php if ($row['st_lap'] == 1) {
-                                                    echo 'Terverifikasi';
-                                                } elseif ($row['st_lap'] == 2) {
-                                                    echo 'Ditolak';
-                                                } else {
-                                                    echo 'Belum Diverifikasi';
-                                                } ?></td>
+                                                echo 'Terverifikasi';
+                                            } elseif ($row['st_lap'] == 2) {
+                                                echo 'Ditolak';
+                                            } else {
+                                                echo 'Belum Diverifikasi';
+                                            } ?></td>
                                         <td class="td-actions text-right">
                                             <a href="<?= BASEURL; ?>/kehilangan/detail/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-sm "> <i class="fa fa-info"></i></a>
-                                            <?php if (isset($_SESSION['lvladmin']) == 11 || $_SESSION['id'] == 'user') : ?><a href="<?= BASEURL; ?>/kehilangan/edit/<?= $row['id_kehilangan']; ?>" class="btn btn-warning btn-sm "> <i class="fa fa-edit"></i></a>
-                                                <a href="<?= BASEURL; ?>/kehilangan/hapus/<?= $row['id_kehilangan']; ?>" class="btn btn-sm btn-danger " onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <?php if (isset($_SESSION['lvladmin']) || (isset($_SESSION['user']) && $row['st_lap'] == 0)) : ?><a href="<?= BASEURL; ?>/kehilangan/edit/<?= $row['id_kehilangan']; ?>" class="btn btn-warning btn-sm ml-1 "> <i class="fa fa-edit"></i></a>
+                                                <a href="<?= BASEURL; ?>/kehilangan/hapus/<?= $row['id_kehilangan']; ?>" class="btn btn-sm btn-danger ml-1" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                             <?php endif ?>
                                         </td>
                                     </tr>

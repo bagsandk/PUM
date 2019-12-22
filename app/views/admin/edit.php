@@ -34,23 +34,26 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" value="<?= $data['admin']['password']; ?>">
+                                        <input type="password" class="form-control" id="password" name="password">
+                                        <small id="emailHelp" class="form-text text-muted">Biarkan kosong jika tidak di ubah</small>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4 pr-1">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Level</label>
-                                        <select class="form-control" id="lvl" name="lvl">
-                                            <option value="10" <?php if ($data['admin']['lvl'] == '10') echo 'selected="selected"'; ?>>Admin</option>
-                                            <option value="11" <?php if ($data['admin']['lvl'] == '11') echo 'selected="selected"'; ?>>Super Admin</option>
-                                        </select>
+                            <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
+                                <div class="row">
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Level</label>
+                                            <select class="form-control" id="lvl" name="lvl">
+                                                <option value="10" <?php if ($data['admin']['lvl'] == '10') echo 'selected="selected"'; ?>>Admin</option>
+                                                <option value="11" <?php if ($data['admin']['lvl'] == '11') echo 'selected="selected"'; ?>>Super Admin</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endif ?>
                             <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
-                            <a href="<?= BASEURL; ?>/admin" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
+                            <a href="<?= BASEURL; ?>/dashboard" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
                             <div class="clearfix"></div>
                         </form>
                     </div>

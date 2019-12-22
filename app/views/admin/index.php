@@ -8,7 +8,7 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Tabel Admin</h4>
-                        <button type="button" class="btn btn-primary fas fa-keyboard pull-right" data-toggle="modal" data-target="#exampleModalLong"></button>
+                        <button type="button" class="btn btn-primary btn-simple pull-right" data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-plus "></i> </button>
                         <!-- <p class="card-category">Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -26,20 +26,20 @@
                             <tbody>
                                 <?php $no = 1;
                                 foreach ($data['admin'] as $row) :
-                                    ?>
+                                ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
                                         <td><?= $row['nm_admin']; ?></td>
                                         <td><?= $row['username']; ?></td>
                                         <td><?= $row['password']; ?></td>
                                         <td><?php if ($row['lvl'] == 10) {
-                                                    echo 'Admin';
-                                                } else {
-                                                    echo 'Super Admin';
-                                                } ?></td>
+                                                echo 'Admin';
+                                            } else {
+                                                echo 'Super Admin';
+                                            } ?></td>
                                         <td class="td-actions text-right">
-                                            <a href="<?= BASEURL; ?>/admin/edit/<?= $row['id_admin']; ?>" class="btn btn-info btn-simple btn-link"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/admin/hapus/<?= $row['id_admin']; ?>" class="btn btn-simple btn-danger btn-link" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <a href="<?= BASEURL; ?>/admin/edit/<?= $row['id_admin']; ?>" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
+                                            <a href="<?= BASEURL; ?>/admin/hapus/<?= $row['id_admin']; ?>" class="btn btn-sm btn-danger ml-1" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

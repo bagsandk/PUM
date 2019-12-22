@@ -4,7 +4,7 @@ class Kehilangan extends Controller
 {
     public function __construct()
     {
-        if (!isset($_SESSION['id'])) {
+        if (!isset($_SESSION['pelapor']) && !isset($_SESSION['admin'])) {
             header('Location: ' . BASEURL . '/login');
             exit;
         }

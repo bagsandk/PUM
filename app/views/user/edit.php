@@ -26,7 +26,7 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>NO HP</label>
-                                        <input type="number" class="form-control" id="no_hpu" name="no_hp" size="13" value="<?= $data['user']['no_hp']; ?>">
+                                        <input type="text" maxlength="13" minlength="11" onkeypress="return angka(event);" class="form-control" id="no_hpu" name="no_hp" size="13" value="<?= $data['user']['no_hp']; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -63,19 +63,14 @@
                     </div>
                     <div class="card-body">
                         <div class="author">
-                            <a href="#">
+                            <a href="<?= BASEURL ?>/pelapor">
                                 <img class="avatar border-gray" src="<?= BASEURL; ?>/img/user/<?= $data['user']['foto']; ?>" alt="...">
-                                <h5 class="title">Mike Andrew</h5>
+                                <h5 class="title"><?= $data['nama'] ?></h5>
                             </a>
                             <p class="description">
-                                michael24
+                                <?= $_SESSION['id'] ?>
                             </p>
                         </div>
-                        <p class="description text-center">
-                            "Lamborghini Mercy
-                            <br> Your chick she so thirsty
-                            <br> I'm in that two seat Lambo"
-                        </p>
                     </div>
                     <hr>
                     <div class="button-container mr-auto ml-auto">
