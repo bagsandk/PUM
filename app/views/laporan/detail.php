@@ -12,19 +12,19 @@
                     <div class="card-body">
                         <form action="<?= BASEURL; ?>/pelapor/getedit" method="post">
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>No Surat</label>
                                         <input type="text" readonly onkeypress="return angka;" maxlength="16" class="form-control" id="nik" name="nik" value="<?= $data['laporan']['no_surat']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Surat</label>
                                         <input type="date" readonly style="text-transform: capitalize;" class="form-control" id="nama" name="nama" value="<?= $data['laporan']['tgl_surat']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Waktu</label>
                                         <input type="time" readonly style="text-transform: capitalize;" class="form-control" id="nama" name="nama" value="<?= $data['laporan']['waktu']; ?>">
@@ -33,18 +33,18 @@
                             </div>
                             <h5>Data Pelapor</h5>
                             <div class="row">
-                                <!-- <div class="col-md-12 pr-1">
+                                <!-- <div class="col-md-12 pm-1">
                                     <div class="form-group">
                                         <h4>Data Pelapor</h4>
                                     </div>
                                 </div> -->
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>NIK</label>
                                         <input type="text" readonly onkeypress="return angka;" maxlength="16" class="form-control" id="nik" name="nik" value="<?= $data['kehilangan']['nik']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-6 pl-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="nama" name="nama" value="<?= $data['kehilangan']['nama']; ?>">
@@ -52,19 +52,19 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tempat Lahir</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="tmp_lahir" name="tmp_lahir" value="<?= $data['kehilangan']['tmp_lahir']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
                                         <input type="date" readonly class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $data['kehilangan']['tgl_lahir']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Alamat</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="alamat" name="alamat" value="<?= $data['kehilangan']['alamat']; ?>">
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 pr-1">
+                                <div class="col-md-3 pm-1">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
                                         <div class="form-check">
@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Agama</label>
                                         <select class="form-control" id="agama" disabled name="agama">
@@ -102,7 +102,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Status</label>
                                         <select class="form-control" disabled id="status" name="status">
@@ -111,13 +111,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3 px-1">
+                                <div class="col-md-3 pm-1">
                                     <div class="form-group">
                                         <label>Pekerjaan</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="pekerjaan" name="pekerjaan" value="<?= $data['kehilangan']['pekerjaan']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-2 pl-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Kewarganegaraan</label>
                                         <select class="form-control" id="kwn" disabled name="kwn">
@@ -129,13 +129,13 @@
                             </div>
                             <h5>Data kehilangan</h5>
                             <div class="row">
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Barang</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="nm_brg_doc" name="nm_brg_doc" value="<?= $data['kehilangan']['nm_brg_doc'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-6 pl-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Keterangan Barang</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="ket" name="ket" placeholder="Ex: IMEI, No Simcard, NIK , Warna" value="<?= $data['kehilangan']['ket'] ?>">
@@ -143,19 +143,19 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Hilang</label>
                                         <input type="date" readonly class="form-control" id="tgl_hilang" name="tgl_hilang" value="<?= $data['kehilangan']['tgl_hilang'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Waktu Hilang</label>
                                         <input type="time" readonly class="form-control" id="pukul" name="pukul" value="<?= $data['kehilangan']['pukul'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Perkiraan Tempat Hilang</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="tempat" name="tempat" value="<?= $data['kehilangan']['tempat'] ?>">

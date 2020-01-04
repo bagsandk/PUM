@@ -13,6 +13,11 @@ class Laporan_model
         $this->db->query('select * from ' . $this->table);
         return $this->db->resultSet();
     }
+    public function count()
+    {
+        $this->db->query('select max(no_surat) from ' . $this->table);
+        return $this->db->single();
+    }
     public function getLaporanById($id)
     {
         $this->db->query('select * from ' . $this->table . ' where id_lap = :id_lap');
@@ -40,11 +45,14 @@ class Laporan_model
     }
     public function tambahLaporan($id)
     {
+        $c = $this->count();
+        $num = (int) $c['max(no_surat)'] + 1;
         $query = "INSERT INTO " . $this->table . " VALUES ('',:id_kehilangan, :no_surat, :tgl_surat, :waktu)";
         $this->db->query($query);
         $this->db->bind('id_kehilangan', $id);
-        $this->db->bind('no_surat', random_int(1, 100));
+        $this->db->bind('no_surat', $num);
         $this->db->bind('tgl_surat', date('Y-m-d', time()));
+
         $this->db->bind('waktu', date('H:i', time()));
 
         $this->db->execute();

@@ -57,6 +57,8 @@ class User extends Controller
         if (isset($_SESSION['admin'])) {
             $data['judul'] = 'Ubah Data User';
             $data['user'] = $this->model('User_model')->getUserById($id);
+            $data['pelapor'] = $this->model('pelapor_model')->getPelaporByUser($id);
+            $data['nama'] = $data['pelapor']['nama'];
             $this->view('templates/header', $data);
             $this->view('user/edit', $data);
             $this->view('templates/footer');

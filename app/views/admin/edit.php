@@ -15,15 +15,15 @@
                                 <input type="hidden" class="form-control" id="id_admin" name="id_admin" value="<?= $data['admin']['id_admin']; ?>">
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Nama</label>
-                                        <input type="text" class="form-control" id="nm_admin" name="nm_admin" value="<?= $data['admin']['nm_admin']; ?>">
+                                        <input type="text" class="form-control" onkeypress="return huruf(event);" id="nm_admin" name="nm_admin" value="<?= $data['admin']['nm_admin']; ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Username</label>
                                         <input type="text" class="form-control" id="username" name="username" value="<?= $data['admin']['username']; ?>">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Password</label>
                                         <input type="password" class="form-control" id="password" name="password">
@@ -41,7 +41,7 @@
                             </div>
                             <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
                                 <div class="row">
-                                    <div class="col-md-4 pr-1">
+                                    <div class="col-md-4 pm-1">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Level</label>
                                             <select class="form-control" id="lvl" name="lvl">
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                             <?php endif ?>
-                            <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
+                            <button type="submit" class="btn btn-info btn-fill btn-sm ">Simpan</button>
                             <a href="<?= BASEURL; ?>/dashboard" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
                             <div class="clearfix"></div>
                         </form>

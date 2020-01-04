@@ -30,7 +30,7 @@
                     <div class="t m0 x4 h3 y8 ff2 fs0 fc0 sc0 ls0 ws0">Nomor : SKTLK / <?= $data['lap']['no_surat'] ?> / XXV / 2019 / SPKT </div>
                     <div class="t m0 x2 h2 y9 ff1 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x2 h4 ya ff3 fs0 fc0 sc0 ls0 ws0">Yang <span class="_ _0"></span>bertanda <span class="_ _0"></span>tangan <span class="_ _0"></span>dibawah <span class="_ _0"></span>ini <span class="_ _1"></span>Kepala <span class="_ _0"></span>Kepolisian <span class="_ _0"></span>Sektor <span class="_ _0"></span>Kedaton <span class="_ _0"></span>Ban<span class="_ _2"></span>dar </div>
-                    <div class="t m0 x5 h4 yb ff3 fs0 fc0 sc0 ls0 ws0">Lampung menerangkan pada hari <?= $data['harib'] ?> tanggal <span class="_ _2"></span><?= $data['tglb'] ?>, <span class="_ _2"></span>Pukul <?= date('h:i', strtotime($data['waktu'])) ?> <span class="_ _2"></span>WIB </div>
+                    <div class="t m0 x5 h4 yb ff3 fs0 fc0 sc0 ls0 ws0">Lampung menerangkan pada hari <?= $data['harib'] ?> tanggal <span class="_ _2"></span><?= $data['tglb'] ?>, <span class="_ _2"></span>Pukul <?= $data['waktu']; ?> <span class="_ _2"></span>WIB </div>
                     <div class="t m0 x5 h4 yc ff3 fs0 fc0 sc0 ls0 ws0">telah datang seseorang laki-laki yang mengaku beridentitas : </div>
                     <div class="t m0 x5 h4 yd ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 ye ff3 fs0 fc0 sc0 ls0 ws0">Nama <span class="_ _3"> </span> <span class="_ _4"> </span> <span class="_ _4"> </span>: <?= $data['kel']['nama'] ?> </div>
@@ -47,7 +47,7 @@
                     <div class="t m0 x5 h4 y19 ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x6 h5 y1a ff3 fs0 fc0 sc0 ls0 ws0"><span class="ff4"> <span class="_ _c"> </span></span> </div>
                     <div class="t m0 x5 h4 y1b ff3 fs0 fc0 sc0 ls0 ws0"> </div>
-                    <div class="t m0 x5 h4 y1c ff3 fs0 fc0 sc0 ls0 ws0">Terjadi pada hari <span class="_ _d"> </span> <span> :</span> <?= $data['harih'] ?>, <?= $data['tglh'] ?> Sekitar pukul <?= date('h:i', strtotime($data['pukul'])) ?> WIB </div>
+                    <div class="t m0 x5 h4 y1c ff3 fs0 fc0 sc0 ls0 ws0">Terjadi pada hari <span class="_ _d"> </span> <span> :</span> <?= $data['harih'] ?>, <?= $data['tglh'] ?> Sekitar pukul <?= $data['pukul'] ?> WIB </div>
                     <div class="t m0 x5 h4 y1d ff3 fs0 fc0 sc0 ls0 ws0">Diperkirakan di <span class="_ _e"> </span>:<span> <?= $data['kel']['tempat'] ?> </div>
                     <div class="t m0 x5 h4 y1e ff3 fs0 fc0 sc0 ls0 ws0"> </div>
                     <div class="t m0 x5 h4 y1f ff3 fs0 fc0 sc0 ls0 ws0"> </div>

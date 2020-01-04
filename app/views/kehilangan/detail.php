@@ -16,33 +16,33 @@
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $data['kehilangan']['id_user']; ?>">
                             </div>
                             <div class="row">
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>NIK</label>
                                         <input type="text" readonly onkeypress="return angka;" maxlength="16" class="form-control" id="nik" name="nik" value="<?= $data['kehilangan']['nik']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-6 pl-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
-                                        <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="nama" name="nama" value="<?= $data['kehilangan']['nama']; ?>">
+                                        <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="nama" onkeypress="return huruf(event);" name="nama" value="<?= $data['kehilangan']['nama']; ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tempat Lahir</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="tmp_lahir" name="tmp_lahir" value="<?= $data['kehilangan']['tmp_lahir']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
                                         <input type="date" readonly class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $data['kehilangan']['tgl_lahir']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Alamat</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="alamat" name="alamat" value="<?= $data['kehilangan']['alamat']; ?>">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-2 pr-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
                                         <div class="form-check">
@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Agama</label>
                                         <select class="form-control" id="agama" disabled name="agama">
@@ -80,7 +80,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Status</label>
                                         <select class="form-control" disabled id="status" name="status">
@@ -89,13 +89,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3 px-1">
+                                <div class="col-md-3 pm-1">
                                     <div class="form-group">
                                         <label>Pekerjaan</label>
                                         <input type="text" readonly style="text-transform: capitalize;" class="form-control" id="pekerjaan" name="pekerjaan" value="<?= $data['kehilangan']['pekerjaan']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-2 pl-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Kewarganegaraan</label>
                                         <select class="form-control" id="kwn" disabled name="kwn">
@@ -105,9 +105,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
+                            <!-- <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] != 11) : ?>
                                 <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
-                            <?php endif ?>
+                            <?php endif ?> -->
                             <!-- <button href="<?= BASEURL; ?>/pelapor" class="btn btn-warning btn-fill btn-sm ">Batal</button></a> -->
                             <div class="clearfix"></div>
                         </form>
@@ -131,7 +131,7 @@
                                 <input type="hidden" class="form-control" id="id_pelapor" name="id_pelapor" value="<?= $data['kehilangan']['id_pelapor']; ?>">
                             <?php else : ?>
                                 <div class="row">
-                                    <div class="col-md-6 pr-1">
+                                    <div class="col-md-6 pm-1">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Pelapor</label>
                                             <select class="form-control" id="id_pelapor" name="id_pelapor" placeholder="Data Pelapor">
@@ -145,47 +145,48 @@
                                 </div>
                             <?php endif ?>
                             <div class="row">
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Barang</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="nm_brg_doc" name="nm_brg_doc" value="<?= $data['kehilangan']['nm_brg_doc'] ?>">
+                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="nm_brg_doc" name="nm_brg_doc" <?php if ($data['kehilangan']['st_lap'] != 0) : ?> disabled <?php endif ?> value="<?= $data['kehilangan']['nm_brg_doc'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-6 pl-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Keterangan Barang</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="ket" name="ket" placeholder="Ex: IMEI, No Simcard, NIK , Warna" value="<?= $data['kehilangan']['ket'] ?>">
+                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="ket" name="ket" placeholder="Ex: IMEI, No Simcard, NIK , Warna" <?php if ($data['kehilangan']['st_lap'] != 0) : ?> disabled <?php endif ?> value="<?= $data['kehilangan']['ket'] ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Hilang</label>
-                                        <input type="date" class="form-control" id="tgl_hilang" name="tgl_hilang" value="<?= $data['kehilangan']['tgl_hilang'] ?>">
+                                        <input type="date" class="form-control" id="tgl_hilang" name="tgl_hilang" <?php if ($data['kehilangan']['st_lap'] != 0) : ?> disabled <?php endif ?> value="<?= $data['kehilangan']['tgl_hilang'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Waktu Hilang</label>
-                                        <input type="time" class="form-control" id="pukul" name="pukul" value="<?= $data['kehilangan']['pukul'] ?>">
+                                        <input type="time" class="form-control" id="pukul" name="pukul" <?php if ($data['kehilangan']['st_lap'] != 0) : ?> disabled <?php endif ?> value="<?= $data['kehilangan']['pukul'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Perkiraan Tempat Hilang</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="tempat" name="tempat" value="<?= $data['kehilangan']['tempat'] ?>">
+                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="tempat" name="tempat" <?php if ($data['kehilangan']['st_lap'] != 0) : ?> disabled <?php endif ?> value="<?= $data['kehilangan']['tempat'] ?>">
                                     </div>
                                 </div>
                             </div>
                             <?php if (!isset($_SESSION['user'])) : ?>
                                 <div class="row">
-                                    <div class="col-md-4 pr-1">
+                                    <div class="col-md-4 pm-1">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Status</label>
-                                            <select class="form-control" id="st_lap" name="st_lap">
+                                            <select class="form-control" id="st_lap" <?php if ($data['kehilangan']['st_lap'] != 0) : ?> disabled <?php endif ?>name="st_lap">
                                                 <option value="0" <?php if ($data['kehilangan']['st_lap'] == '0') echo 'selected="selected"'; ?>>Belum Verifikasi</option>
                                                 <option value="1" <?php if ($data['kehilangan']['st_lap'] == '1') echo 'selected="selected"'; ?>>Di Verifikasi</option>
+                                                <option value="2" <?php if ($data['kehilangan']['st_lap'] == '2') echo 'selected="selected"'; ?>>Di Tolak</option>
                                             </select>
                                         </div>
                                     </div>
@@ -215,7 +216,15 @@
                                 <?php if ($data['kehilangan']['st_lap'] == 1) : ?>
                                     <a href="<?= BASEURL ?>/cetak/<?= $data['kehilangan']['id_kehilangan'] ?>" target=" _blank" class="btn btn-info btn-fill btn-sm >Cetak SKTLK">Cetak Laporan</a>
                                 <?php endif ?>
-                                <button type="submit" class="btn btn-warning btn-fill btn-sm ">Verifikasi</button>
+                                <!-- <?php if ($data['kehilangan']['st_lap'] == 0) : ?>
+                                    <a href="<?= BASEURL ?>/cetak/tolak/<?= $data['kehilangan']['id_kehilangan'] ?>" class="btn btn-danger btn-fill btn-sm >Cetak SKTLK">Tolak</a>
+                                <?php endif ?> -->
+                                <button type="submit" class="btn btn-success btn-fill btn-sm ">Verifikasi</button>
+                            </form>
+                            <form action="<?= BASEURL ?>/cetak/tolak" method="post">
+                                <input type="hidden" class="form-control" id="email" name="email" value="<?= $data['kehilangan']['email']; ?>">
+                                <input type="hidden" class="form-control" id="id_kehilangan" name="id_kehilangan" value="<?= $data['kehilangan']['id_kehilangan']; ?>">
+                                <button type="submit" class="btn btn-danger mt-2 btn-fill btn-sm ">Tolak</button>
                             </form>
                         </div>
                     </div>

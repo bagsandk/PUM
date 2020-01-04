@@ -16,33 +16,33 @@
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $data['pelapor']['id_user']; ?>">
                             </div>
                             <div class="row">
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>NIK</label>
-                                        <input type="text" maxlength="16" onkeypress="return angka(event);" class="form-control" id="nik" name="nik" value="<?= $data['pelapor']['nik']; ?>" required>
+                                        <input type="text" maxlength="16" onkeypress="return angka(event);" maxlength="16" minlength="16" class="form-control" id="nik" name="nik" value="<?= $data['pelapor']['nik']; ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6 pl-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="nama" name="nama" value="<?= $data['pelapor']['nama']; ?>" required>
+                                        <input type="text" style="text-transform: capitalize;" maxlength="19" onkeypress="return huruf(event);" class="form-control" id="nama" name="nama" value="<?= $data['pelapor']['nama']; ?>" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tempat Lahir</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="tmp_lahir" name="tmp_lahir" value="<?= $data['pelapor']['tmp_lahir']; ?>" required>
+                                        <input type="text" style="text-transform: capitalize;" maxlength="20" class="form-control" id="tmp_lahir" name="tmp_lahir" value="<?= $data['pelapor']['tmp_lahir']; ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
                                         <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $data['pelapor']['tgl_lahir']; ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Alamat</label>
                                         <input type="text" style="text-transform: capitalize;" class="form-control" id="alamat" name="alamat" value="<?= $data['pelapor']['alamat']; ?>" required>
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-2 pr-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
                                         <div class="form-check">
@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Agama</label>
                                         <select class="form-control" id="agama" name="agama" required>
@@ -80,7 +80,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Status</label>
                                         <select class="form-control" id="status" name="status" required>
@@ -89,13 +89,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3 px-1">
+                                <div class="col-md-3 pm-1">
                                     <div class="form-group">
                                         <label>Pekerjaan</label>
                                         <input type="text" style="text-transform: capitalize;" class="form-control" id="pekerjaan" name="pekerjaan" value="<?= $data['pelapor']['pekerjaan']; ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-md-2 pl-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Kewarganegaraan</label>
                                         <select class="form-control" id="kwn" name="kwn" required>
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
+                            <button type="submit" class="btn btn-info btn-fill btn-sm ">Save</button>
                             <?php if (!isset($_SESSION['user'])) : ?>
                                 <a href="<?= BASEURL; ?>/pelapor" class="btn btn-warning btn-fill btn-sm ">Batal</button></a>
                             <?php endif ?>

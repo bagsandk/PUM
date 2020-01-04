@@ -11,7 +11,7 @@ class Kehilangan_model
     public function getALLKehilangan()
     {
         // tabel kehilangan idpelapor diganati nama
-        $this->db->query('SELECT x.nama,z.* from pelapor as x, kehilangan as z where x.id_pelapor = z.id_pelapor order by z.st_lap asc ');
+        $this->db->query('SELECT x.nama,z.* from pelapor as x, kehilangan as z where x.id_pelapor = z.id_pelapor order by z.st_lap and z.create_date asc ');
         return $this->db->resultSet();
     }
     public function getKehilanganByIdP($id)
@@ -23,7 +23,7 @@ class Kehilangan_model
     }
     public function getKehilanganById($id)
     {
-        //pelapor dan kehilanan lewat id pelapor
+        //pelapor dan kehilanan lewat id kehilangan
         $this->db->query('SELECT * FROM pelapor as z INNER JOIN kehilangan as c ON c.id_pelapor = z.id_pelapor WHERE c.id_kehilangan =:id_kel');
         $this->db->bind('id_kel', $id);
         return $this->db->single();
@@ -37,13 +37,14 @@ class Kehilangan_model
     }
     public function tambahDataKehilangan($data)
     {
-        $this->db->query("INSERT INTO " . $this->table . " VALUES ('', :id_pelapor, :nm_brg_doc, :ket, :tgl_hilang, :pukul, :tempat, '')");
+        $this->db->query("INSERT INTO " . $this->table . " VALUES ('', :id_pelapor, :nm_brg_doc, :ket, :tgl_hilang, :pukul, :tempat, '', :create_date)");
         $this->db->bind('id_pelapor', $data['id_pelapor']);
         $this->db->bind('nm_brg_doc', $data['nm_brg_doc']);
         $this->db->bind('ket', $data['ket']);
         $this->db->bind('tgl_hilang', $data['tgl_hilang']);
         $this->db->bind('pukul', $data['pukul']);
         $this->db->bind('tempat', $data['tempat']);
+        $this->db->bind('create_date', date('Y-m-d h:i:s', time()));
 
         $this->db->execute();
 
@@ -90,6 +91,16 @@ class Kehilangan_model
         $query = "UPDATE kehilangan SET st_lap = 1 where id_kehilangan = :id_kehilangan";
         $this->db->query($query);
         $this->db->bind('id_kehilangan', $data['id_kehilangan']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+    public function updateTolak($id)
+    {
+        $query = "UPDATE kehilangan SET st_lap = 2 where id_kehilangan = :id_kehilangan";
+        $this->db->query($query);
+        $this->db->bind('id_kehilangan', $id);
 
         $this->db->execute();
 

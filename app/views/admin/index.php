@@ -59,7 +59,7 @@
                             <form action="<?= BASEURL; ?>/Admin/tambah" method="post">
                                 <div class="form-group">
                                     <label for="example-text-input" class="col-form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama">
+                                    <input class="form-control" onkeypress="return huruf(event);" type="text" id="nama" name="nama" placeholder="Nama">
                                 </div>
                                 <div class="form-group">
                                     <label for="example-text-input" class="col-form-label">Username</label>

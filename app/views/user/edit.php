@@ -15,7 +15,7 @@
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $data['user']['id_user']; ?>">
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-0">
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="email" class="form-control" id="emailu" name="email" value="<?= $data['user']['email']; ?>">
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-0">
                                     <div class="form-group">
                                         <label>NO HP</label>
                                         <input type="text" maxlength="13" minlength="11" onkeypress="return angka(event);" class="form-control" id="no_hpu" name="no_hp" size="13" value="<?= $data['user']['no_hp']; ?>">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-0">
                                     <div class="form-group">
                                         <label>Password</label>
                                         <input type="password" class="form-control" id="password" name="password">
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-0">
                                     <div class="form-group">
                                         <label>Foto</label>
                                         <input type="file" class="form-control-file" id="foto" name="foto" value="<?= $data['user']['foto']; ?>">
@@ -63,12 +63,12 @@
                     </div>
                     <div class="card-body">
                         <div class="author">
-                            <a href="<?= BASEURL ?>/pelapor">
+                            <a href="<?= BASEURL ?>/pelapor/edit/<?= $data['user']['id_user']; ?>">
                                 <img class="avatar border-gray" src="<?= BASEURL; ?>/img/user/<?= $data['user']['foto']; ?>" alt="...">
                                 <h5 class="title"><?= $data['nama'] ?></h5>
                             </a>
                             <p class="description">
-                                <?= $_SESSION['id'] ?>
+                                <?= $_SESSION['idu'] ?>
                             </p>
                         </div>
                     </div>

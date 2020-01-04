@@ -12,50 +12,50 @@
                                 <input type="hidden" class="form-control" id="id_pelapor" name="id_pelapor" value="<?= $data['pelaporbyu']['id_pelapor']; ?>">
                             <?php else : ?>
                                 <div class="row">
-                                    <div class="col-md-6 pr-1">
+                                    <div class="col-md-6 pm-1">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Pelapor</label>
                                             <select type="hidden" class="form-control" id="id_pelapor" name="id_pelapor" placeholder="Data Pelapor">
                                                 <option value="" type="hidden">Data Pelapor</option>
                                                 <?php foreach ($data['pelapor'] as $row) {
-                                                        echo '<option value="' . $row['id_pelapor'] . '">ID : ' . $row['id_pelapor'] . ' => Nama Pelapor : ' . $row['nama'] . '</option>';
-                                                    } ?>
+                                                    echo '<option value="' . $row['id_pelapor'] . '">ID : ' . $row['id_pelapor'] . ' => Nama Pelapor : ' . $row['nama'] . '</option>';
+                                                } ?>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             <?php endif ?>
                             <div class="row">
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Barang</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="nm_brg_doc" name="nm_brg_doc">
+                                        <input type="text" maxlength="20" style="text-transform: capitalize;" class="form-control" id="nm_brg_doc" name="nm_brg_doc">
                                     </div>
                                 </div>
-                                <div class="col-md-6 pl-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Keterangan Barang</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="ket" name="ket" placeholder="Ex: IMEI, No Simcard, NIK , Warna">
+                                        <input type="text" maxlength="40" style="text-transform: capitalize;" class="form-control" id="ket" name="ket" placeholder="Ex: IMEI, No Simcard, NIK , Warna">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Hilang</label>
                                         <input type="date" class="form-control" id="tgl_hilang" name="tgl_hilang">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Waktu Hilang</label>
                                         <input type="time" class="form-control" id="pukul" name="pukul">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Perkiraan Tempat Hilang</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="tempat" name="tempat">
+                                        <input type="text" style="text-transform: capitalize;" maxlength="20" class="form-control" id="tempat" name="tempat">
                                     </div>
                                 </div>
                             </div>

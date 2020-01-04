@@ -61,35 +61,56 @@ class User_model
         $namafoto = date('dmYHis') . '-id_user=' . $_POST['id_user'] . '.jpg';
         $path = './img/user/' . $namafoto;
         if (move_uploaded_file($tmp, $path)) {
-            $query = "UPDATE " . $this->table . " SET 
+            if ($data['password'] == '') {
+                $query = "UPDATE " . $this->table . " SET 
 		email = :email,
-		password = :password,
         foto = :foto,
         no_hp = :no_hp
-		WHERE id_user = :id_user";
+        WHERE id_user = :id_user";
+            } else {
+                $query = "UPDATE " . $this->table . " SET 
+            email = :email,
+            password = :password,
+            foto = :foto,
+            no_hp = :no_hp
+            WHERE id_user = :id_user";
+            }
+
 
             $this->db->query($query);
             $this->db->bind('id_user', $data['id_user']);
             $this->db->bind('email', $data['email']);
             $this->db->bind('no_hp',  $data['no_hp']);
-            $this->db->bind('password', md5($data['password']));
             $this->db->bind('foto', $namafoto);
+            if ($data['password'] != '') {
+                $this->db->bind('password', md5($data['password']));
+            }
 
             $this->db->execute();
 
             return $this->db->rowCount();
         } else {
-            $query = "UPDATE " . $this->table . " SET 
+            if ($data['password'] == '') {
+                $query = "UPDATE " . $this->table . " SET 
 		email = :email,
-		password = :password,
         no_hp = :no_hp
-		WHERE id_user = :id_user";
+        WHERE id_user = :id_user";
+            } else {
+                $query = "UPDATE " . $this->table . " SET 
+                email = :email,
+                password = :password,
+                no_hp = :no_hp
+                WHERE id_user = :id_user";
+            }
 
             $this->db->query($query);
             $this->db->bind('id_user', $data['id_user']);
             $this->db->bind('email', $data['email']);
             $this->db->bind('no_hp',  $data['no_hp']);
-            $this->db->bind('password', md5($data['password']));
+            if ($data['password'] != '') {
+                $this->db->bind('password', md5($data['password']));
+            }
+
 
             $this->db->execute();
 

@@ -13,41 +13,41 @@
                                 <input type="hidden" class="form-control" id="id_user" name="id_user">
                             </div>
                             <div class="row">
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>NIK</label>
-                                        <input type="number" maxlength="16" class="form-control" id="nik" name="nik">
+                                        <input type="text" onkeypress="return angka(event);" maxlength="16" minlength="16" class="form-control" id="nik" name="nik">
                                     </div>
                                 </div>
-                                <div class="col-md-6 pl-1">
+                                <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="nama" name="nama">
+                                        <input type="text" onkeypress="return huruf(event);" maxlength="19" style="text-transform: capitalize;" class="form-control" id="nama" name="nama">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tempat Lahir</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="tmp_lahir" name="tmp_lahir">
+                                        <input type="text" style="text-transform: capitalize;" maxlength="20" class="form-control" id="tmp_lahir" name="tmp_lahir">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
                                         <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pl-1">
+                                <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="alamat" name="alamat">
+                                        <input type="text" style="text-transform: capitalize;" maxlength="50" class="form-control" id="alamat" name="alamat">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-2 pr-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
                                         <div class="form-check">
@@ -64,7 +64,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Agama</label>
                                         <select class="form-control" id="agama" name="agama">
@@ -78,7 +78,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Status</label>
                                         <select class="form-control" id="status" name="status">
@@ -88,13 +88,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label>Pekerjaan</label>
                                         <input type="text" style="text-transform: capitalize;" class="form-control" id="pekerjaan" name="pekerjaan">
                                     </div>
                                 </div>
-                                <div class="col-md-2 pl-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Kewarganegaraan</label>
                                         <select class="form-control" id="kwn" name="kwn">
@@ -104,7 +104,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2 pl-1">
+                                <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">User</label>
                                         <select class="form-control" id="id_user" name="id_user">

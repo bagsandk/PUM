@@ -36,7 +36,7 @@ class Controller
 			'Sun' => 'Minggu',
 			'Mon' => 'Senin',
 			'Tue' => 'Selasa',
-			'Wed' => 'Rabo',
+			'Wed' => 'Rabu',
 			'Thu' => 'Kamis',
 			'Fri' => 'Jumat',
 			'Sat' => 'Sabtu'

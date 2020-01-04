@@ -114,9 +114,9 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <?php if (isset($_SESSION['user'])) : ?> <a class="dropdown-item" href="<?= BASEURL ?>/user">Profil</a>
                                     <?php elseif (isset($_SESSION['admin'])) : ?>
-                                        <a class="dropdown-item" href="<?= BASEURL ?>/admin">Profil</a>
+                                        <a class="dropdown-item" href="<?= BASEURL ?>/admin/edit/<?= $_SESSION['admin'] ?>">Profil</a>
                                     <?php endif ?>
-                                    <a class="dropdown-item" href="<?= BASEURL; ?>/login/keluar">Log out</a>
+                                    <a class=" dropdown-item" href="<?= BASEURL; ?>/login/keluar">Log out</a>
                                 </div>
                             </li>
                         </ul>

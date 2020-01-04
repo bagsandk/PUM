@@ -33,17 +33,27 @@ class Admin_model
 	}
 	public function editDataAdmin($data)
 	{
-		$query = "UPDATE admin SET 
+		if ($data['password'] == '') {
+			$query = "UPDATE admin SET 
 		nm_admin = :nm_admin,
-		username = :username,
-		password = :password 
+		username = :username
 		WHERE id_admin = :id_admin";
+		} else {
+			$query = "UPDATE admin SET 
+			nm_admin = :nm_admin,
+			username = :username,
+			password = :password 
+			WHERE id_admin = :id_admin";
+		}
+
 
 		$this->db->query($query);
 		$this->db->bind('id_admin', $data['id_admin']);
 		$this->db->bind('nm_admin', $data['nm_admin']);
 		$this->db->bind('username', $data['username']);
-		$this->db->bind('password', md5($data['password']));
+		if ($data['password'] != '') {
+			$this->db->bind('password', md5($data['password']));
+		}
 
 		$this->db->execute();
 

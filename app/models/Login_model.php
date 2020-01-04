@@ -27,7 +27,7 @@ class Login_model
     function cekuser($data)
     {
         $this->db->query("SELECT * FROM user WHERE email = :email ");
-        $this->db->bind('email', $data['email']);
+        $this->db->bind('email', $data);
         $this->db->execute();
         return $this->db->rowCount();
     }

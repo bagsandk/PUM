@@ -53,7 +53,7 @@ function ceklogin() {
         $("#email").focus();
         return false;
     }
-    if ($('#email').val().length < 6) {
+    if ($('#email').val().length < 5) {
         alert('Email Minimal 6 karakter  ');
         $("#email").focus();
         return false;
