@@ -11,6 +11,10 @@ class cetak extends Controller
             header('Location: ' . BASEURL . '/dashboard');
             exit;
         }
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 12) {
+            header('Location: ' . BASEURL . '/dashboard');
+            exit;
+        }
     }
     public function index($id)
     {
@@ -25,8 +29,9 @@ class cetak extends Controller
 
             $data['harib'] = $this->hari($data['lap']['tgl_surat']);
             $data['tglb'] = $this->tgl_indo($data['lap']['tgl_surat']);
+            $data['noromw'] = $this->bulanRomawi($data['lap']['tgl_surat']);
             $data['waktu'] = $this->waktu($data['lap']['waktu']);
-            $this->view('cetak/cetak', $data);
+            $this->view('cetak/index', $data);
         } else {
             $this->model('Laporan_model')->tambahLaporan($id);
             $data['lap'] = $this->model('Laporan_model')->getLaporanByIdKel($id);
@@ -39,12 +44,17 @@ class cetak extends Controller
 
             $data['harib'] = $this->hari($data['lap']['tgl_surat']);
             $data['tglb'] = $this->tgl_indo($data['lap']['tgl_surat']);
+            $data['noromw'] = $this->bulanRomawi($data['lap']['tgl_surat']);
             $data['waktu'] = $this->waktu($data['lap']['waktu']);
-            $this->view('cetak/cetak', $data);
+            $this->view('cetak/index', $data);
         }
     }
     public function verif()
     {
+        if (!isset($_POST['email'])) {
+            header('Location: ' . BASEURL . '/kehilangan/detail');
+            exit;
+        }
         $from_mail = 'babarianmetal@gmail.com';
         $to = $_POST['email'];
 
@@ -73,6 +83,10 @@ AKAM;
     }
     public function tolak()
     {
+        if (!isset($_POST['email'])) {
+            header('Location: ' . BASEURL . '/kehilangan/detail');
+            exit;
+        }
         $from_mail = 'babarianmetal@gmail.com';
         $to = $_POST['email'];
 

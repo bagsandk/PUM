@@ -97,7 +97,7 @@
 
     <!-- Footer -->
     <footer class="bg-light py-3">
-        <div class="small text-center text-muted">Copyright &copy; 2019 - Start Bootstrap</div>
+        <div class="small text-center text-muted">Copyright &copy; 2019 - PUMBAEG</div>
         </div>
     </footer>
     <!-- Modal tutorial-->

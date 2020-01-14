@@ -165,7 +165,7 @@
                             <!-- <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
                                 <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
                             <?php endif ?> -->
-                            <!-- <button href="<?= BASEURL; ?>/pelapor" class="btn btn-warning btn-fill btn-sm ">Batal</button></a> -->
+                            <button href="<?= BASEURL; ?>/pelapor" class="btn btn-warning btn-fill btn-sm mt-4 ">Kembali</button></a>
                             <div class="clearfix"></div>
                         </form>
                     </div>

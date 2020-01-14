@@ -12,7 +12,7 @@ class Admin extends Controller
 
 	public function index()
 	{
-		if ($_SESSION['lvladmin'] == 10) {
+		if ($_SESSION['lvladmin'] != 11) {
 			$data['admin'] = $this->model('Admin_model')->getAdminById($_SESSION['admin']);
 			$data['judul'] = 'Admin';
 			$this->view('templates/header', $data);
@@ -29,6 +29,10 @@ class Admin extends Controller
 
 	public function tambah()
 	{
+		if (!isset($_POST['password'])) {
+			header('Location: ' . BASEURL . '/Kehilangan');
+			exit;
+		}
 		if ($this->model('Admin_model')->tambahDataAdmin($_POST) > 0) {
 			flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
 			header('Location: ' . BASEURL . '/Admin');
@@ -64,6 +68,10 @@ class Admin extends Controller
 
 	public function getedit()
 	{
+		if (!isset($_POST['password'])) {
+			header('Location: ' . BASEURL . '/Kehilangan');
+			exit;
+		}
 		if ($this->model('Admin_model')->editDataAdmin($_POST) > 0) {
 			flasher::setFlash('Berhasil', 'Diubah', 'success');
 			header('Location: ' . BASEURL . '/Admin');
@@ -79,10 +87,6 @@ class Admin extends Controller
 	{
 		if ($_SESSION['lvladmin'] == 10) {
 			header('Location: ' . BASEURL . '/admin');
-			exit;
-		}
-		if ($_SESSION['lvladmin'] == 10) {
-			header('Location: ' . BASEURL . '/dashboard');
 			exit;
 		}
 		if ($this->model('Admin_model')->hapusDataAdmin($id) > 0) {

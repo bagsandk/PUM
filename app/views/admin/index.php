@@ -34,8 +34,10 @@
                                         <td><?= $row['password']; ?></td>
                                         <td><?php if ($row['lvl'] == 10) {
                                                 echo 'Admin';
-                                            } else {
+                                            } else if ($row['lvl'] == 11) {
                                                 echo 'Super Admin';
+                                            } else {
+                                                echo 'Kepala';
                                             } ?></td>
                                         <td class="td-actions text-right">
                                             <a href="<?= BASEURL; ?>/admin/edit/<?= $row['id_admin']; ?>" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
@@ -74,6 +76,7 @@
                                     <select class="form-control" id="lvl" name="lvl">
                                         <option value="10">Admin</option>
                                         <option value="11">Super Admin</option>
+                                        <option value="12">Kepala</option>
                                     </select>
                                 </div>
                                 <div class="modal-footer">

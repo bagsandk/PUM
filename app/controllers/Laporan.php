@@ -12,6 +12,10 @@ class Laporan extends Controller
             header('Location: ' . BASEURL . '/login');
             exit;
         }
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 10) {
+            header('Location: ' . BASEURL . '/dashboard');
+            exit;
+        }
     }
 
     public function index()
@@ -36,6 +40,14 @@ class Laporan extends Controller
 
     public function tambah()
     {
+        if (!isset($_POST['id_kehilangan'])) {
+            header('Location: ' . BASEURL . '/Laporan');
+            exit;
+        }
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 12) {
+            header('Location: ' . BASEURL . '/Laporan');
+            exit;
+        }
         if ($this->model('Laporan_model')->tambahDataLaporan($_POST) > 0) {
             flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             header('Location: ' . BASEURL . '/Laporan');
@@ -49,6 +61,10 @@ class Laporan extends Controller
 
     public function edit($id)
     {
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 12) {
+            header('Location: ' . BASEURL . '/Laporan');
+            exit;
+        }
         $data['judul'] = 'Ubah Data Laporan';
         $data['laporan'] = $this->model('Laporan_model')->getLaporanById($id);
         $this->view('templates/header', $data);
@@ -58,6 +74,14 @@ class Laporan extends Controller
 
     public function getedit()
     {
+        if (!isset($_POST['id_kehilangan'])) {
+            header('Location: ' . BASEURL . '/Laporan');
+            exit;
+        }
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 12) {
+            header('Location: ' . BASEURL . '/Laporan');
+            exit;
+        }
         if ($this->model('Laporan_model')->editDataLaporan($_POST) > 0) {
             flasher::setFlash('Berhasil', 'Diubah', 'success');
             header('Location: ' . BASEURL . '/Laporan');
@@ -71,6 +95,10 @@ class Laporan extends Controller
 
     public function hapus($id)
     {
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 12) {
+            header('Location: ' . BASEURL . '/Laporan');
+            exit;
+        }
         if ($this->model('Laporan_model')->hapusDataLaporan($id) > 0) {
             flasher::setFlash('Berhasil', 'Dihapus', 'success');
             header('Location: ' . BASEURL . '/Laporan');

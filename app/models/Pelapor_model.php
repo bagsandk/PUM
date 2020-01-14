@@ -19,6 +19,30 @@ class Pelapor_model
         $this->db->bind('id_pelapor', $id);
         return $this->db->single();
     }
+    public function cekNik($nik)
+    {
+        $this->db->query('SELECT nik FROM pelapor WHERE nik = :nik');
+        $this->db->bind('nik', $nik);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+    public function cekNik2($data)
+    {
+        $this->db->query('SELECT nik FROM pelapor WHERE id_pelapor NOT IN (:id_pelapor)');
+        $this->db->bind('id_pelapor', $data['id_pelapor']);
+        // $this->db->bind('nik', $data['nik']);
+        $da = $this->db->resultSet();
+        foreach ($da as $n) {
+            $cek[] = $n['nik'];
+        }
+        if (in_array($data['nik'], $cek, false)) {
+            return 1;
+            exit;
+        } else {
+            return 0;
+            exit;
+        }
+    }
     public function getPelaporByUser($id)
     {
         $this->db->query('select * from ' . $this->table . ' where id_user = :id_user');
@@ -27,6 +51,7 @@ class Pelapor_model
     }
     public function tambahDataPelapor($data)
     {
+
         $query = "INSERT INTO " . $this->table . "(id_user,nik,nama,tmp_lahir,tgl_lahir,jk,alamat,agama,status,pekerjaan,kwn) VALUES (:id_user, :nik, :nama, :tmp_lahir, :tgl_lahir, :jk, :alamat, :agama, :status, :pekerjaan, :kwn )";
         $this->db->query($query);
         $this->db->bind('id_user', $_SESSION['user']);
@@ -67,6 +92,7 @@ class Pelapor_model
     }
     public function editDataPelapor($data)
     {
+
         $query = "UPDATE pelapor SET 
     		nik = :nik,
     		nama = :nama,
@@ -98,14 +124,25 @@ class Pelapor_model
 
         return $this->db->rowCount();
     }
+    public function NotIN($id)
+    {
+        $this->db->query('SELECT pelapor.id_pelapor from pelapor WHERE pelapor.id_pelapor=' . $id . ' IN (SELECT kehilangan.id_pelapor FROM kehilangan)');
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
     public function hapusDataPelapor($id)
     {
-        $query = "DELETE FROM " . $this->table . " WHERE ID_" . $this->table . " = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+        if ($this->NotIN($id) > 0) {
 
-        $this->db->execute();
+            return 'id digunakan';
+        } else {
+            $query = "DELETE FROM " . $this->table . " WHERE ID_" . $this->table . " = :id";
+            $this->db->query($query);
+            $this->db->bind('id', $id);
 
-        return $this->db->rowCount();
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        }
     }
 }

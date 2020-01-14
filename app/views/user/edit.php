@@ -63,7 +63,9 @@
                     </div>
                     <div class="card-body">
                         <div class="author">
-                            <a href="<?= BASEURL ?>/pelapor/edit/<?= $data['user']['id_user']; ?>">
+                            <a href="<?= BASEURL ?>/pelapor<?php if (isset($_SESSION['admin'])) {
+                                                                echo '/edit/' . $data['user']['id_user'];
+                                                            } ?>">
                                 <img class="avatar border-gray" src="<?= BASEURL; ?>/img/user/<?= $data['user']['foto']; ?>" alt="...">
                                 <h5 class="title"><?= $data['nama'] ?></h5>
                             </a>

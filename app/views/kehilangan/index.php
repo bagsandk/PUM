@@ -49,7 +49,9 @@
                                             <?php if (isset($_SESSION['lvladmin']) && $row['st_lap'] == 1) : ?><a href="<?= BASEURL; ?>/cetak/<?= $row['id_kehilangan']; ?> " target=" _blank" class="btn btn-success btn-sm ml-1 ">Cetak</a> <?php endif ?>
                                             <a href="<?= BASEURL; ?>/kehilangan/detail/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-sm ml-1"> <i class="fa fa-info"></i></a>
                                             <?php if (isset($_SESSION['lvladmin']) || (isset($_SESSION['user']) && $row['st_lap'] == 0)) : ?><a href="<?= BASEURL; ?>/kehilangan/edit/<?= $row['id_kehilangan']; ?>" class="btn btn-warning btn-sm ml-1 "> <i class="fa fa-edit"></i></a>
-                                                <a href="<?= BASEURL; ?>/kehilangan/hapus/<?= $row['id_kehilangan']; ?>" class="btn btn-sm btn-danger ml-1" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                                <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
+                                                    <a href="'<?= BASEURL ?>/kehilangan/hapus/<?= $row['id_kehilangan'] ?>" class="btn btn-sm btn-danger ml-1" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>';
+                                                <?php endif ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>

@@ -48,4 +48,23 @@ class Controller
 	{
 		return date('H:i', strtotime($waktu));
 	}
+	public function bulanRomawi($tgl)
+	{
+		$bulan = array(
+			1 => 'I',
+			'II',
+			'III',
+			'IV',
+			'V',
+			'VI',
+			'VII',
+			'VIII',
+			'IX',
+			'X',
+			'XI',
+			'XII'
+		);
+		$parse = explode('-', $tgl);
+		return $bulan[(int) $parse[1]] . '/' . $parse[0];
+	}
 }

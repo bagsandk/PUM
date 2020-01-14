@@ -23,18 +23,13 @@
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="abu">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="javascript:;" class="simple-text">
+                    <a href="<?= BASEURL; ?>/dashboard" class="simple-text">
                         SKTLK
                     </a>
                 </div>
-                <ul class="nav">
+                <ul class="nav mt-3">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASEURL; ?>/dashboard">
                             <i class="nc-icon nc-icon nc-bank btn-link"></i>
@@ -65,7 +60,7 @@
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['admin']) || isset($_SESSION['pelapor'])) { ?>
+                    <?php if ((isset($_SESSION['admin']) && $_SESSION['lvladmin'] != 12) || isset($_SESSION['pelapor'])) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/Kehilangan">
                                 <i class="nc-icon nc-notes btn-link"></i>
@@ -73,11 +68,11 @@
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['admin'])) { ?>
+                    <?php if (isset($_SESSION['admin']) && $_SESSION['lvladmin'] != 10) { ?>
                         <li>
                             <a class="nav-link" href="<?= BASEURL; ?>/Laporan">
                                 <i class="nc-icon nc-notes btn-link"></i>
-                                <p>Laporan Kehilangan</p>
+                                <p>Laporan SKTLK</p>
                             </a>
                         </li>
                     <?php } ?>
@@ -95,23 +90,16 @@
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav mr-auto">
-                            <!-- <li class="nav-item">
-                                <a href="#" class="nav-link" data-toggle="dropdown">
-                                    <span class="d-lg-none">Dashboard</span>
-                                </a>
-                            </li> -->
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <span class="no-icon"><?php if (isset($_SESSION['nama'])) {
                                                                 echo $_SESSION['nama'];
                                                             } else {
                                                                 echo 'Lengkapi Profil';
                                                             } ?></span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <div class=" dropdown-menu mt-0">
                                     <?php if (isset($_SESSION['user'])) : ?> <a class="dropdown-item" href="<?= BASEURL ?>/user">Profil</a>
                                     <?php elseif (isset($_SESSION['admin'])) : ?>
                                         <a class="dropdown-item" href="<?= BASEURL ?>/admin/edit/<?= $_SESSION['admin'] ?>">Profil</a>

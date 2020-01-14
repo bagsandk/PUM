@@ -16,13 +16,13 @@
                                 <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>NIK</label>
-                                        <input type="text" onkeypress="return angka(event);" maxlength="16" minlength="16" class="form-control" id="nik" name="nik">
+                                        <input type="text" onkeypress="return angka(event);" maxlength="16" minlength="16" class="form-control" id="nik" name="nik" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pm-1">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
-                                        <input type="text" onkeypress="return huruf(event);" maxlength="19" style="text-transform: capitalize;" class="form-control" id="nama" name="nama">
+                                        <input type="text" onkeypress="return huruf(event);" maxlength="19" style="text-transform: capitalize;" class="form-control" id="nama" name="nama" required>
                                     </div>
                                 </div>
                             </div>
@@ -30,13 +30,13 @@
                                 <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tempat Lahir</label>
-                                        <input type="text" style="text-transform: capitalize;" maxlength="20" class="form-control" id="tmp_lahir" name="tmp_lahir">
+                                        <input type="text" style="text-transform: capitalize;" maxlength="20" class="form-control" id="tmp_lahir" name="tmp_lahir" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 pm-1">
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir">
+                                        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 pm-1">
@@ -67,7 +67,7 @@
                                 <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Agama</label>
-                                        <select class="form-control" id="agama" name="agama">
+                                        <select class="form-control" id="agama" name="agama" required>
                                             <option value="">---Pilih Agama---</option>
                                             <option value="ISLAM">Islam</option>
                                             <option value="KRISTEN">Keristen</option>
@@ -81,7 +81,7 @@
                                 <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Status</label>
-                                        <select class="form-control" id="status" name="status">
+                                        <select class="form-control" id="status" name="status" required>
                                             <option value="">---Pilih Status---</option>
                                             <option value="Menikah">Menikah</option>
                                             <option value="single">Single</option>
@@ -91,13 +91,13 @@
                                 <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label>Pekerjaan</label>
-                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="pekerjaan" name="pekerjaan">
+                                        <input type="text" style="text-transform: capitalize;" class="form-control" id="pekerjaan" name="pekerjaan" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Kewarganegaraan</label>
-                                        <select class="form-control" id="kwn" name="kwn">
+                                        <select class="form-control" id="kwn" name="kwn" required>
                                             <option value="">---Pilih Kewarganegaraan---</option>
                                             <option value="wni">WNI</option>
                                             <option value="wna">WNA</option>
@@ -107,10 +107,10 @@
                                 <div class="col-md-2 pm-1">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">User</label>
-                                        <select class="form-control" id="id_user" name="id_user">
+                                        <select class="form-control" id="id_user" name="id_user" required>
                                             <option value="">User</option>
                                             <?php foreach ($data['user'] as $row) {
-                                                echo '<option value="' . $row['id_user'] . '">' . $row['id_user'] . '</option>';
+                                                echo '<option value="' . $row['id_user'] . '">' . $row['email'] . '</option>';
                                             } ?>
 
                                         </select>

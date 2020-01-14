@@ -71,6 +71,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Agama</label>
                                         <select class="form-control" id="agama" name="agama" required>
+                                            <!-- <option value="">---Pilih Agama---</option> -->
                                             <option value="ISLAM" <?php if ($data['pelapor']['agama'] == 'ISLAM') echo 'selected="selected"'; ?>>Islam</option>
                                             <option value="KRISTEN" <?php if ($data['pelapor']['agama'] == 'KRISTEN') echo 'selected="selected"'; ?>>Keristen</option>
                                             <option value="HINDU" <?php if ($data['pelapor']['agama'] == 'HINDU') echo 'selected="selected"'; ?>>Hindu</option>

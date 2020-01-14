@@ -37,9 +37,10 @@
                                         <td><?= $row['waktu']; ?></td>
                                         <td class="td-actions text-right">
                                             <a href="<?= BASEURL; ?>/laporan/detail/<?= $row['id_kehilangan']; ?>" class="btn btn-info btn-sm"> <i class="fa fa-info"></i></a>
-                                            <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-warning btn-sm ml-1"> <i class="fa fa-edit"></i></a>
-                                            <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class="btn btn-sm btn-danger ml-1" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
-                                            <a href="<?= BASEURL; ?>/cetak/<?= $row['id_kehilangan']; ?>" class=" pull-right btn btn-sm btn-success ml-3">Cetak ulang</a>
+                                            <?php if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 11) : ?>
+                                                <a href="<?= BASEURL; ?>/laporan/edit/<?= $row['id_lap']; ?>" class="btn btn-warning btn-sm ml-1"> <i class="fa fa-edit"></i></a>
+                                                <a href="<?= BASEURL; ?>/laporan/hapus/<?= $row['id_lap']; ?>" class="btn btn-sm btn-danger ml-1" onclick="return confirm('yakin?');"><i class="fa fa-times"></i></a>
+                                            <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

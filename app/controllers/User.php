@@ -8,7 +8,7 @@ class User extends Controller
             header('Location: ' . BASEURL . '/login');
             exit;
         }
-        if (isset($_SESSION['lvladmin']) && ($_SESSION['lvladmin']) < 11) {
+        if (isset($_SESSION['lvladmin']) && ($_SESSION['lvladmin']) != 11) {
             header('Location: ' . BASEURL . '/login');
             exit;
         }
@@ -41,6 +41,10 @@ class User extends Controller
 
     public function tambah()
     {
+        if (!isset($_POST)) {
+            header('Location: ' . BASEURL . '/User');
+            exit;
+        }
         if ($this->model('User_model')->tambahDataUser($_POST) > 0) {
             flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             header('Location: ' . BASEURL . '/User');
@@ -67,6 +71,10 @@ class User extends Controller
 
     public function getedit()
     {
+        if (!isset($_POST)) {
+            header('Location: ' . BASEURL . '/User');
+            exit;
+        }
         if ($this->model('User_model')->editDataUser($_POST) > 0) {
             flasher::setFlash('Berhasil', 'Diubah', 'success');
             header('Location: ' . BASEURL . '/User');
@@ -82,6 +90,10 @@ class User extends Controller
     {
         if ($this->model('User_model')->hapusDataUser($id) > 0) {
             flasher::setFlash('Berhasil', 'Dihapus', 'success');
+            header('Location: ' . BASEURL . '/User');
+            exit;
+        } else if ($this->model('User_model')->hapusDataUser($id) == 'id digunakan') {
+            flasher::setFlash('Gagal', 'Dihapus karena id user digunakan', 'danger');
             header('Location: ' . BASEURL . '/User');
             exit;
         } else {

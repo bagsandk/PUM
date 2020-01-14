@@ -8,10 +8,10 @@ class Pelapor extends Controller
             header('Location: ' . BASEURL . '/login');
             exit;
         }
-        // if (isset($_SESSION['lvladmin']) == 11) {
-        //     header('Location: ' . BASEURL . '/dashboard');
-        //     exit;
-        // }
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 12) {
+            header('Location: ' . BASEURL . '/dashboard');
+            exit;
+        }
     }
 
     public function index()
@@ -23,7 +23,6 @@ class Pelapor extends Controller
             $this->view('pelapor/index', $data);
             $this->view('templates/footer');
         } else {
-
             $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
             $data['judul'] = 'Pelapor';
             $this->view('templates/header', $data);
@@ -44,14 +43,24 @@ class Pelapor extends Controller
     }
     public function tambahdata()
     {
-        if ($this->model('Pelapor_model')->tambahDataPelaporByAdmin($_POST) > 0) {
-            flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
+        if (!isset($_POST['id_user'])) {
+            header('Location: ' . BASEURL . '/Pelapor');
+            exit;
+        }
+        if ($this->model('Pelapor_model')->cekNik($_POST['nik']) > 0) {
+            flasher::setFlash('Gagal', 'Ditambahkan, NIK sudah terdaftar', 'danger');
             header('Location: ' . BASEURL . '/Pelapor');
             exit;
         } else {
-            flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/Pelapor');
-            exit;
+            if ($this->model('Pelapor_model')->tambahDataPelaporByAdmin($_POST) > 0) {
+                flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
+                header('Location: ' . BASEURL . '/Pelapor');
+                exit;
+            } else {
+                flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
+                header('Location: ' . BASEURL . '/Pelapor');
+                exit;
+            }
         }
     }
 
@@ -68,28 +77,44 @@ class Pelapor extends Controller
     //SELECT * FROM `user` as x INNER JOIN pelapor as z ON x.id_user = z.id_user WHERE z.id_user = 22
     public function getedit()
     {
+        if (!isset($_POST['id_user'])) {
+            header('Location: ' . BASEURL . '/Pelapor');
+            exit;
+        }
         if ($_POST['id_user'] > 0) {
-            if ($this->model('Pelapor_model')->editDataPelapor($_POST) > 0) {
-                flasher::setFlash('Berhasil', 'Diubah', 'success');
+            if ($this->model('Pelapor_model')->cekNik2($_POST) > 0) {
+                flasher::setFlash('Gagal', 'Update, NIK sudah terdaftar', 'danger');
                 header('Location: ' . BASEURL . '/Pelapor');
                 exit;
             } else {
-                flasher::setFlash('Gagal', 'Diubah', 'danger');
-                header('Location: ' . BASEURL . '/Pelapor');
-                exit;
+                if ($this->model('Pelapor_model')->editDataPelapor($_POST) > 0) {
+                    flasher::setFlash('Berhasil', 'Diubah', 'success');
+                    header('Location: ' . BASEURL . '/Pelapor');
+                    exit;
+                } else {
+                    flasher::setFlash('Gagal', 'Diubah', 'danger');
+                    header('Location: ' . BASEURL . '/Pelapor');
+                    exit;
+                }
             }
         } else {
-            if ($this->model('Pelapor_model')->tambahDataPelapor($_POST) > 0) {
-                flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
-                $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
-                $_SESSION['pelapor'] = $data['pelapor']['id_pelapor'];
-                $_SESSION['nama'] = $data['pelapor']['nama'];
+            if ($this->model('Pelapor_model')->cekNik($_POST['nik']) > 0) {
+                flasher::setFlash('Gagal', 'Ditambahkan, NIK sudah terdaftar', 'danger');
                 header('Location: ' . BASEURL . '/Pelapor');
                 exit;
             } else {
-                flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
-                header('Location: ' . BASEURL . '/Pelapor');
-                exit;
+                if ($this->model('Pelapor_model')->tambahDataPelapor($_POST) > 0) {
+                    flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
+                    $data['pelapor'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
+                    $_SESSION['pelapor'] = $data['pelapor']['id_pelapor'];
+                    $_SESSION['nama'] = $data['pelapor']['nama'];
+                    header('Location: ' . BASEURL . '/Pelapor');
+                    exit;
+                } else {
+                    flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
+                    header('Location: ' . BASEURL . '/Pelapor');
+                    exit;
+                }
             }
         }
     }
@@ -98,6 +123,10 @@ class Pelapor extends Controller
     {
         if ($this->model('Pelapor_model')->hapusDataPelapor($id) > 0) {
             flasher::setFlash('Berhasil', 'Dihapus', 'success');
+            header('Location: ' . BASEURL . '/Pelapor');
+            exit;
+        } else if ($this->model('Pelapor_model')->hapusDataPelapor($id) == 'id digunakan') {
+            flasher::setFlash('Gagal', 'Dihapus karena id Pelapor digunakan', 'danger');
             header('Location: ' . BASEURL . '/Pelapor');
             exit;
         } else {

@@ -1,6 +1,41 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+            <?php $st = (int) $data['kehilangan']['st_lap'];
+            if (isset($_SESSION['user'])) : ?>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Notif </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert <?php if ($st == 2) {
+                                                    echo 'alert-danger';
+                                                } else if ($st == 1) {
+                                                    echo 'alert-success';
+                                                } else {
+                                                    echo 'alert-warning';
+                                                } ?>">
+                                <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
+                                    <i class="nc-icon nc-simple-remove"></i>
+                                </button>
+                                <span>
+                                    <b>
+                                        <?php if ($st == 2) {
+                                            echo 'Maaf - </b> Surat Keterangan Tanda Lapor Kehilangan Anda Ditolak';
+                                        } else if ($st == 1) {
+                                            echo 'Selamat - </b> Surat Keterangan Tanda Lapor Kehilangan Anda telah diverifikasi';
+                                        } else {
+                                            echo ' Mohon Tunggu - </b> Surat Keterangan Tanda Lapor Kehilangan Anda Belum diverifikasi';
+                                        }
+                                        ?></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif ?>
+        </div>
+        <div class="row">
             <div class="col-md-6 float-right">
                 <?php Flasher::flash(); ?>
             </div>
@@ -196,6 +231,7 @@
                                 <button type="submit" class="btn btn-info btn-fill btn-sm ">Update</button>
                             <?php endif ?>
                             <!-- <button href="<?= BASEURL; ?>/kehilangan" class="btn btn-warning btn-fill btn-sm ">Batal</button></a> -->
+                            <a href="<?= BASEURL; ?>/kehilangan" class="btn btn-warning btn-fill btn-sm  ">Kembali</a>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -214,7 +250,8 @@
                                 <input type="hidden" class="form-control" id="email" name="email" value="<?= $data['kehilangan']['email']; ?>">
                                 <input type="hidden" class="form-control" id="id_kehilangan" name="id_kehilangan" value="<?= $data['kehilangan']['id_kehilangan']; ?>">
                                 <?php if ($data['kehilangan']['st_lap'] == 1) : ?>
-                                    <a href="<?= BASEURL ?>/cetak/<?= $data['kehilangan']['id_kehilangan'] ?>" target=" _blank" class="btn btn-info btn-fill btn-sm >Cetak SKTLK">Cetak Laporan</a>
+                                    <a href="<?= BASEURL ?>/cetak/<?= $data['kehilangan']['id_kehilangan'] ?>" target=" _blank" class="btn btn-info btn-fill btn-sm mb-2 >Cetak SKTLK">Cetak Laporan</a>
+                                    <br>
                                 <?php endif ?>
                                 <!-- <?php if ($data['kehilangan']['st_lap'] == 0) : ?>
                                     <a href="<?= BASEURL ?>/cetak/tolak/<?= $data['kehilangan']['id_kehilangan'] ?>" class="btn btn-danger btn-fill btn-sm >Cetak SKTLK">Tolak</a>

@@ -76,15 +76,27 @@ class Kehilangan_model
 
         return $this->db->rowCount();
     }
-    public function hapusDataKehilangan($id)
+    public function NotIN($id)
     {
-        $query = "DELETE FROM " . $this->table . " WHERE ID_KEHILANGAN = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $id);
-
+        $this->db->query('SELECT kehilangan.id_kehilangan from kehilangan WHERE kehilangan.id_kehilangan =' . $id . ' IN (SELECT lapkehilangan.id_kehilangan FROM lapkehilangan)');
         $this->db->execute();
 
         return $this->db->rowCount();
+    }
+    public function hapusDataKehilangan($id)
+    {
+        if ($this->NotIN($id) > 0) {
+
+            return 'id digunakan';
+        } else {
+            $query = "DELETE FROM " . $this->table . " WHERE ID_KEHILANGAN = :id";
+            $this->db->query($query);
+            $this->db->bind('id', $id);
+
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        }
     }
     public function updateVerif($data)
     {

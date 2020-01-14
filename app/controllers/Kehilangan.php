@@ -8,6 +8,10 @@ class Kehilangan extends Controller
             header('Location: ' . BASEURL . '/login');
             exit;
         }
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 12) {
+            header('Location: ' . BASEURL . '/dashboard');
+            exit;
+        }
     }
 
     public function index()
@@ -30,6 +34,10 @@ class Kehilangan extends Controller
 
     public function tambah()
     {
+        if (isset($_SESSION['lvladmin']) && $_SESSION['lvladmin'] == 10) {
+            header('Location: ' . BASEURL . '/Kehilangan');
+            exit;
+        }
         $data['pelapor'] = $this->model('Pelapor_model')->getALLPelapor();
         if (isset($_SESSION['user'])) {
             $data['pelaporbyu'] = $this->model('Pelapor_model')->getPelaporByUser($_SESSION['user']);
@@ -41,20 +49,23 @@ class Kehilangan extends Controller
     }
     public function detail($id)
     {
+        $i = (int) $id;
         if (isset($_SESSION['user'])) {
-            $get['kehilangan'] = $this->model('Kehilangan_model')->getKehilanganByIdP($_SESSION['user']);
-            foreach ($get['kehilangan'] as $row) {
-                $cek = $row['id_kehilangan'];
+            $get = $this->model('Kehilangan_model')->getKehilanganByIdP($_SESSION['user']);
+            foreach ($get as $row) {
+                $cek[] = $row['id_kehilangan'];
             }
-            if ($id != $cek) {
+            if (in_array($i, $cek, false)) {
+                var_dump($id);
+                $data['kehilangan'] = $this->model('Kehilangan_model')->getALLKehilanganById($id);
+                $data['judul'] = 'Detail Kehilangan';
+                $this->view('templates/header', $data);
+                $this->view('kehilangan/detail', $data);
+                $this->view('templates/footer');
+            } else {
                 header('Location: ' . BASEURL . '/Kehilangan');
                 exit;
             }
-            $data['kehilangan'] = $this->model('Kehilangan_model')->getALLKehilanganById($id);
-            $data['judul'] = 'Detail Kehilangan';
-            $this->view('templates/header', $data);
-            $this->view('kehilangan/detail', $data);
-            $this->view('templates/footer');
         } else {
             $data['kehilangan'] = $this->model('Kehilangan_model')->getALLKehilanganById($id);
             $data['judul'] = 'Detail Kehilangan';
@@ -65,6 +76,10 @@ class Kehilangan extends Controller
     }
     public function tambahdata()
     {
+        if (!isset($_POST['ket'])) {
+            header('Location: ' . BASEURL . '/Kehilangan');
+            exit;
+        }
         if ($this->model('Kehilangan_model')->tambahDataKehilangan($_POST) > 0) {
             flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             header('Location: ' . BASEURL . '/Kehilangan');
@@ -105,6 +120,10 @@ class Kehilangan extends Controller
 
     public function getedit()
     {
+        if (!isset($_POST['ket'])) {
+            header('Location: ' . BASEURL . '/Kehilangan');
+            exit;
+        }
         if ($this->model('Kehilangan_model')->editDataKehilangan($_POST) > 0) {
             flasher::setFlash('Berhasil', 'Diubah', 'success');
             header('Location: ' . BASEURL . '/Kehilangan');
@@ -130,6 +149,10 @@ class Kehilangan extends Controller
         }
         if ($this->model('Kehilangan_model')->hapusDataKehilangan($id) > 0) {
             flasher::setFlash('Berhasil', 'Dihapus', 'success');
+            header('Location: ' . BASEURL . '/Kehilangan');
+            exit;
+        } else if ($this->model('Kehilangan_model')->hapusDataKehilangan($id) == 'id digunakan') {
+            flasher::setFlash('Gagal', 'Dihapus karena id Kehilangan digunakan', 'danger');
             header('Location: ' . BASEURL . '/Kehilangan');
             exit;
         } else {

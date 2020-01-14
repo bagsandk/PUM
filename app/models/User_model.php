@@ -18,6 +18,13 @@ class User_model
         $this->db->query('SELECT * FROM user WHERE NOT EXISTS (SELECT * FROM pelapor WHERE user.id_user = pelapor.id_user)');
         return $this->db->resultSet();
     }
+    public function NotIN($id)
+    {
+        $this->db->query('SELECT user.id_user,user.email from user WHERE user.id_user=' . $id . ' IN (SELECT pelapor.id_user FROM pelapor)');
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
     public function getUserById($id)
     {
         $this->db->query('select * from ' . $this->table . ' where id_user = :id_user');
@@ -119,12 +126,17 @@ class User_model
     }
     public function hapusDataUser($id)
     {
-        $query = "DELETE FROM " . $this->table . " WHERE id_user = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+        if ($this->NotIN($id) > 0) {
 
-        $this->db->execute();
+            return 'id digunakan';
+        } else {
+            $query = "DELETE FROM " . $this->table . " WHERE id_user = :id";
+            $this->db->query($query);
+            $this->db->bind('id', $id);
 
-        return $this->db->rowCount();
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        }
     }
 }
